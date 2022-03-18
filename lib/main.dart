@@ -1,10 +1,16 @@
 import 'package:finance_app/core/start/cache/local_cache_manager.dart';
+import 'package:finance_app/core/start/dependency_injection/dependency_injection_container.dart';
+import 'package:finance_app/core/start/navigation/router/navigation_router.dart';
+import 'package:finance_app/core/start/navigation/service/navigation_service.dart';
 import 'package:finance_app/core/start/theme/theme_notifier.dart';
 import 'package:finance_app/core/start/theme/themes/app_theme_dark.dart';
 import 'package:finance_app/core/start/theme/themes/app_theme_light.dart';
 import 'package:finance_app/production/features/caching/project_cache_manager.dart';
 import 'package:finance_app/production/notifiers/commodity_provider.dart';
+import 'package:finance_app/production/notifiers/crypto_provider.dart';
 import 'package:finance_app/production/notifiers/currency_provider.dart';
+import 'package:finance_app/production/notifiers/news_provider.dart';
+import 'package:finance_app/production/notifiers/parity_provider.dart';
 import 'package:finance_app/view/home/home/view/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,11 +21,15 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LocalCacheManager.instance.initCacheService();
   await ProjectCacheManager.init(HiveInitService.instance).initCacheService();
+  setupContainer();
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => ThemeNotifier()),
       ChangeNotifierProvider(create: (context) => CurrencyProvider()),
       ChangeNotifierProvider(create: (context) => CommodityProvider()),
+      ChangeNotifierProvider(create: (context) => ParityProvider()),
+      ChangeNotifierProvider(create: (context) => CryptoProvider()),
+      ChangeNotifierProvider(create: (context) => NewsProvider()),
     ],
     child: const MyApp(),
   ));
@@ -31,6 +41,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: NavigationService.shared.navigationKey,
+      onGenerateRoute: NavigationRouter.instance.generateRoute,
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       theme: AppThemeLight.instance.theme,

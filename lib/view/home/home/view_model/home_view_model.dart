@@ -97,6 +97,7 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
         return _buildRoute(
             _screen.firstWhere((element) => element is OptionsView), settings);
     }
+    return null;
   }
 
   _addScreen<T extends Widget>(T screen) {

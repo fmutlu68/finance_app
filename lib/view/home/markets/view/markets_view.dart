@@ -3,8 +3,16 @@ import 'package:finance_app/production/features/finance_data/base/model/i_commod
 import 'package:finance_app/production/features/finance_data/base/model/info_model.dart';
 import 'package:finance_app/production/features/finance_data/base/model/response_model.dart';
 import 'package:finance_app/production/features/finance_data/models/req/commodity_info.dart';
+import 'package:finance_app/production/features/finance_data/models/req/crypto_info.dart';
+import 'package:finance_app/production/features/finance_data/models/req/parity_info.dart';
+import 'package:finance_app/production/features/finance_data/models/res/crypto.dart';
+import 'package:finance_app/production/features/finance_data/models/res/parity.dart';
 import 'package:finance_app/production/notifiers/commodity_provider.dart';
+import 'package:finance_app/production/notifiers/crypto_provider.dart';
 import 'package:finance_app/production/notifiers/currency_provider.dart';
+import 'package:finance_app/production/notifiers/parity_provider.dart';
+import 'package:finance_app/view/home/markets/components/crypto_card.dart';
+import 'package:finance_app/view/home/markets/components/parity_card.dart';
 import 'package:flutter/material.dart';
 
 import 'package:finance_app/core/base/widget/base_view.dart';
@@ -56,7 +64,7 @@ class _MarketsViewState extends State<MarketsView>
                   icon: Icon(UniconsLine.gold),
                 ),
                 Tab(
-                  icon: Icon(UniconsLine.chart_line),
+                  icon: Icon(UniconsLine.exchange),
                 ),
                 Tab(
                   icon: Icon(UniconsLine.bitcoin),
@@ -67,8 +75,8 @@ class _MarketsViewState extends State<MarketsView>
               children: [
                 buildCurrenciesListChecker,
                 buildCommoditiesListChecker,
-                buildCurrenciesListChecker,
-                buildCommoditiesListChecker
+                buildParitiesListChecker,
+                buildCryptosListChecker
               ],
               controller: viewModel.marketsTabController,
             ),
@@ -104,6 +112,34 @@ class _MarketsViewState extends State<MarketsView>
     }
   }
 
+  Widget get buildParitiesListChecker {
+    ParityProvider _parityProvider = context.watch<ParityProvider>();
+    if (_parityProvider.newParities.isEmpty) {
+      return const Center(child: CircularProgressIndicator());
+    } else {
+      return buildParityList(
+        _parityProvider.isUpdated,
+        _parityProvider.parityInfos,
+        _parityProvider.exParities,
+        _parityProvider.newParities,
+      );
+    }
+  }
+
+  Widget get buildCryptosListChecker {
+    CryptoProvider _cryptoProvider = context.watch<CryptoProvider>();
+    if (_cryptoProvider.newCryptos.isEmpty) {
+      return const Center(child: CircularProgressIndicator());
+    } else {
+      return buildCryptoList(
+        _cryptoProvider.isUpdated,
+        _cryptoProvider.cryptoInfos,
+        _cryptoProvider.exCryptos,
+        _cryptoProvider.newCryptos,
+      );
+    }
+  }
+
   Widget buildCommodityList(bool isUpdated, List<CommodityInfo> infos,
       List<ICommodity> exCommodities, List<ICommodity> newCommodities) {
     return MarketsItemsList<CommodityInfo, ICommodity>(
@@ -130,6 +166,36 @@ class _MarketsViewState extends State<MarketsView>
           exCurrency: exItem,
           newCurrency: newItem,
           currencyInfo: info,
+          isUpdated: isUpdated),
+    );
+  }
+
+  Widget buildParityList(bool isUpdated, List<ParityInfo> infos,
+      List<Parity> exCurrencies, List<Parity> newCurrencies) {
+    return MarketsItemsList<ParityInfo, Parity>(
+      marketItemsInfos: infos,
+      exMarketItems: exCurrencies,
+      newMarketItems: newCurrencies,
+      isUpdated: isUpdated,
+      buildCard: (info, exItem, newItem, isUpdated) => ParityCard(
+          exParity: exItem,
+          newParity: newItem,
+          parityInfo: info,
+          isUpdated: isUpdated),
+    );
+  }
+
+  Widget buildCryptoList(bool isUpdated, List<CryptoInfo> infos,
+      List<Crypto> exCryptos, List<Crypto> newCryptos) {
+    return MarketsItemsList<CryptoInfo, Crypto>(
+      marketItemsInfos: infos,
+      exMarketItems: exCryptos,
+      newMarketItems: newCryptos,
+      isUpdated: isUpdated,
+      buildCard: (info, exItem, newItem, isUpdated) => CryptoCard(
+          exCrypto: exItem,
+          newCrypto: newItem,
+          cryptoInfo: info,
           isUpdated: isUpdated),
     );
   }

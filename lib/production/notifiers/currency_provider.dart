@@ -67,7 +67,7 @@ class CurrencyProvider with ChangeNotifier {
 
   Future<void> startLoadData() async {
     await loadData();
-    Timer.periodic(const Duration(seconds: 4), (timer) async {
+    Timer.periodic(const Duration(minutes: 1), (timer) async {
       await loadData();
     });
   }

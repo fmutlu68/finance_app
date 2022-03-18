@@ -21,15 +21,15 @@ class CommodityProvider with ChangeNotifier {
     commodityInfos = [
       CommodityInfo(name: "XAU-USD", info: "Ons Altın", path: "altin-ons"),
       CommodityInfo(
-          name: "ceyrek-altin",
-          info: "Çeyrek Altın",
-          path: "ceyrek-altin",
-          hideName: true),
-      CommodityInfo(
           name: "gram-altin",
           info: "Gram Altın",
           path: "gram-altin",
           nameToShow: "GAU-TRY"),
+      CommodityInfo(
+          name: "ceyrek-altin",
+          info: "Çeyrek Altın",
+          path: "ceyrek-altin",
+          hideName: true),
       CommodityInfo(name: "BRENT", info: "Brent Petrol", path: "brent-petrol"),
       CommodityInfo(name: "XAG-USD", info: "Ons Gümüş", path: "gumus-ons"),
       CommodityInfo(
@@ -48,7 +48,7 @@ class CommodityProvider with ChangeNotifier {
 
   Future<void> startLoadData() async {
     await loadData();
-    Timer.periodic(const Duration(seconds: 4), (timer) async {
+    Timer.periodic(const Duration(minutes: 4), (timer) async {
       await loadData();
     });
   }

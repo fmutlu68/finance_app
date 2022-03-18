@@ -13,14 +13,5 @@ main() {
     debugPrint((await commodityDataService.getCommodity(CommodityInfo(
             name: "ceyrek-altin", path: "ceyrek-altin", info: "Çeyrek Altın")))
         .toString());
-    // CurrencyDataService(NetworkManager.instance);
-    // print(await currencyDataService.getCurrency(
-    //     CurrencyInfo(name: "RUB", path: "rus-rublesi", date: DateTime.now())));
-    // await currencyDataService.getCurrency(
-    //     CurrencyInfo(name: "EUR", path: "euro", date: DateTime.now()));
-    // await currencyDataService.getCurrency(
-    //     CurrencyInfo(name: "GBP", path: "sterlin", date: DateTime.now()));
-    // await currencyDataService.getCurrency(
-    //     CurrencyInfo(name: "KWD", path: "kuveyt-dinari", date: DateTime.now()));
   });
 }
