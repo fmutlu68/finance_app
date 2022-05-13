@@ -26,7 +26,12 @@ class MarketsItemsList<T extends InfoModel, R extends ResponseModel>
         R exItem = exMarketItems[index];
         R newItem = newMarketItems[index];
         T itemInfo = marketItemsInfos[index];
-        return buildCard(itemInfo, exItem, newItem, isUpdated);
+        return index == 0
+            ? Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: buildCard(itemInfo, exItem, newItem, isUpdated),
+              )
+            : buildCard(itemInfo, exItem, newItem, isUpdated);
       },
     );
   }

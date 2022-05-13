@@ -1,3 +1,5 @@
+import 'package:finance_app/core/extensions/navigation_extension.dart';
+import 'package:finance_app/core/start/navigation/routes/navigation_route.dart';
 import 'package:finance_app/production/constant/enum/currency_enum.dart';
 import 'package:finance_app/production/features/finance_data/base/model/i_commodity.dart';
 import 'package:finance_app/production/features/finance_data/base/model/info_model.dart';
@@ -56,18 +58,30 @@ class _MarketsViewState extends State<MarketsView>
           child: Scaffold(
             appBar: TabBar(
               controller: viewModel.marketsTabController,
-              tabs: const [
+              tabs: [
                 Tab(
-                  icon: Icon(UniconsLine.dollar_alt),
+                  icon: Icon(
+                    UniconsLine.dollar_alt,
+                    color: context.colors.onBackground,
+                  ),
                 ),
                 Tab(
-                  icon: Icon(UniconsLine.gold),
+                  icon: Icon(
+                    UniconsLine.gold,
+                    color: context.colors.onBackground,
+                  ),
                 ),
                 Tab(
-                  icon: Icon(UniconsLine.exchange),
+                  icon: Icon(
+                    UniconsLine.exchange,
+                    color: context.colors.onBackground,
+                  ),
                 ),
                 Tab(
-                  icon: Icon(UniconsLine.bitcoin),
+                  icon: Icon(
+                    UniconsLine.bitcoin,
+                    color: context.colors.onBackground,
+                  ),
                 ),
               ],
             ),

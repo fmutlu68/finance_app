@@ -16,17 +16,18 @@ class CategoryNewsColumnItem<T extends INews> extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        onTap: () {
-          print("Clicked");
-          context.navigate(NavigationRoute.navigateToNewsDetail(news));
-        },
+        onTap: news.link.isEmpty
+            ? () {}
+            : () {
+                context.navigate(NavigationRoute.navigateToNewsDetail(news));
+              },
         title: Text(news.title),
         subtitle: Text(
           news.date ?? "",
           style: context.textTheme.caption,
         ),
         leading: Hero(
-          tag: news.link,
+          tag: news.title + "---" + news.link,
           child: Image.network(
             news.imageUrl,
             width: 80,

@@ -4,9 +4,12 @@ import 'package:finance_app/core/start/network/service/network_manager.dart';
 import 'package:finance_app/production/features/finance_data/base/model/i_news.dart';
 import 'package:finance_app/production/features/finance_data/base/service/i_news_data_service.dart';
 import 'package:finance_app/production/features/finance_data/models/res/agenda_news.dart';
+import 'package:finance_app/production/features/finance_data/models/res/bullonism_news.dart';
+import 'package:finance_app/production/features/finance_data/models/res/crypto_news.dart';
 import 'package:finance_app/production/features/finance_data/models/res/currency_news.dart';
 import 'package:finance_app/production/features/finance_data/models/res/headline_news.dart';
 import 'package:finance_app/production/features/finance_data/models/res/news_detail.dart';
+import 'package:finance_app/production/features/finance_data/models/res/stock_market_news.dart';
 import 'package:finance_app/production/features/finance_data/services/news_data_service.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +18,9 @@ class NewsProvider extends ChangeNotifier {
   List<HeadlineNews> headlines = [];
   List<CurrencyNews> currencyNews = [];
   List<AgendaNews> agendaNews = [];
+  List<CryptoNews> cryptoNews = [];
+  List<BullonismNews> bullonismNews = [];
+  List<StockMarketNews> stockMarketNews = [];
   final List<NewsDetail> _details = [];
 
   bool _isStarted = false;
@@ -36,20 +42,24 @@ class NewsProvider extends ChangeNotifier {
   }
 
   Future<void> loadData() async {
-    try {
-      headlines = await _newsDataService.getHeadlines();
-      currencyNews = await _newsDataService.getCurrencyNews();
-      agendaNews = await _newsDataService.getAgendaNews();
-      isUpdated = true;
+    // try {
+
+    // } catch (error) {
+    //   debugPrint("Catched an Error: $error");
+    //   print(error.runtimeType);
+    // }
+    headlines = await _newsDataService.getHeadlines();
+    currencyNews = await _newsDataService.getCurrencyNews();
+    agendaNews = await _newsDataService.getAgendaNews();
+    cryptoNews = await _newsDataService.getCryptoNews();
+    bullonismNews = await _newsDataService.getBullonismNews();
+    stockMarketNews = await _newsDataService.getStockMarketNews();
+    isUpdated = true;
+    notifyListeners();
+    await Future.delayed(const Duration(seconds: 1), () {
+      isUpdated = false;
       notifyListeners();
-      await Future.delayed(const Duration(seconds: 1), () {
-        isUpdated = false;
-        notifyListeners();
-      });
-    } catch (error) {
-      debugPrint("Catched an Error: $error");
-      print(error.runtimeType);
-    }
+    });
   }
 
   Future<NewsDetail?> getNewsDetail<T extends INews>(T news) async {

@@ -17,13 +17,15 @@ class CurrencyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        onTap: () {},
+        onTap: () {
+          context.navigate(NavigationRoute.navigateToCurrencyItemDetail(
+              currencyInfo, newCurrency));
+        },
         title: Text(
           "${currencyInfo.name} - ${currencyInfo.info}",
           style: getTitleStyle(context),
         ),
-        subtitle:
-            Text("${newCurrency.buyCurrency} / ${newCurrency.sellCurrency}"),
+        subtitle: Text("${newCurrency.buyPrice} / ${newCurrency.sellPrice}"),
         leading: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -43,7 +45,7 @@ class CurrencyCard extends StatelessWidget {
   }
 
   Icon buildCurrencyIndicator(BuildContext context) {
-    return newCurrency.dailyGainAsTL! == "₺0,00"
+    return newCurrency.dailyGainAsPrice! == "₺0,00"
         ? const Icon(Icons.trending_flat)
         : (newCurrency.dailyGain ?? 0.00) < 0.00
             ? const Icon(
@@ -67,17 +69,17 @@ class CurrencyCard extends StatelessWidget {
   }
 
   Text buildDailyGainAsTL(BuildContext context) {
-    if (newCurrency.dailyGainAsTL!.contains("0,00")) {
-      newCurrency.dailyGainAsTL =
-          newCurrency.dailyGainAsTL!.replaceAll("-", "");
+    if (newCurrency.dailyGainAsPrice!.contains("0,00")) {
+      newCurrency.dailyGainAsPrice =
+          newCurrency.dailyGainAsPrice!.replaceAll("-", "");
     }
     return Text(
-      newCurrency.dailyGainAsTL!,
+      newCurrency.dailyGainAsPrice!,
       style: TextStyle(
         color: newCurrency.dailyGain! < 0.00 &&
-                newCurrency.dailyGainAsTL! != "₺0,00"
+                newCurrency.dailyGainAsPrice! != "₺0,00"
             ? Colors.red
-            : newCurrency.dailyGainAsTL! == "₺0,00"
+            : newCurrency.dailyGainAsPrice! == "₺0,00"
                 ? context.colors.onSurface
                 : Colors.green,
       ),

@@ -17,6 +17,7 @@ class ThemeNotifier extends ChangeNotifier {
     } else {
       _mode = ThemeMode.dark;
     }
+    LocalCacheManager.instance.setString("theme", _mode.theme);
     notifyListeners();
   }
 

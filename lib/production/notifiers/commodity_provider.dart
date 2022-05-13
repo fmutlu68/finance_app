@@ -48,7 +48,7 @@ class CommodityProvider with ChangeNotifier {
 
   Future<void> startLoadData() async {
     await loadData();
-    Timer.periodic(const Duration(minutes: 4), (timer) async {
+    Timer.periodic(const Duration(seconds: 4), (timer) async {
       await loadData();
     });
   }
@@ -71,7 +71,7 @@ class CommodityProvider with ChangeNotifier {
         notifyListeners();
       });
     } catch (error) {
-      debugPrint("Catched an Error: $error");
+      print("Catched an Error: $error");
     }
   }
 }

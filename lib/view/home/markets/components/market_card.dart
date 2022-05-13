@@ -6,6 +6,7 @@ class MarketCard extends StatelessWidget {
   String cardTitleText, cardSubtitleText, dailyGainAsPrice;
   final double exDailyGain, newDailyGain;
   final ExchangeCurrency selectedCurrency;
+  final VoidCallback onClicked;
 
   MarketCard({
     Key? key,
@@ -16,13 +17,14 @@ class MarketCard extends StatelessWidget {
     required this.exDailyGain,
     required this.newDailyGain,
     required this.selectedCurrency,
+    required this.onClicked,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        onTap: () {},
+        onTap: onClicked,
         title: Text(cardTitleText, style: getTitleStyle(context)),
         subtitle: Text(cardSubtitleText, style: getTitleStyle(context)),
         leading: Column(

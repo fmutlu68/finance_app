@@ -84,7 +84,7 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
         return _buildRoute(
             _screen.firstWhere((element) => element is DiaryView), settings);
       case "/news":
-        _addScreen<NewsView>(const NewsView());
+        _addScreen<NewsView>(NewsView());
         return _buildRoute(
             _screen.firstWhere((element) => element is NewsView), settings);
       case "/portfolio":

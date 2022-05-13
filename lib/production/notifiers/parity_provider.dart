@@ -42,24 +42,20 @@ class ParityProvider extends ChangeNotifier {
   }
 
   Future<void> loadData() async {
-    try {
-      List<Parity> paritiesToUpdate =
-          await _parityDataService.getParities(parityInfos);
-      if (exParities.isEmpty && newParities.isEmpty) {
-        exParities = paritiesToUpdate;
-        newParities = paritiesToUpdate;
-      } else {
-        exParities = newParities;
-        newParities = paritiesToUpdate;
-      }
-      isUpdated = true;
-      notifyListeners();
-      await Future.delayed(const Duration(seconds: 1), () {
-        isUpdated = false;
-        notifyListeners();
-      });
-    } catch (error) {
-      debugPrint("Catched an Error: $error");
+    List<Parity> paritiesToUpdate =
+        await _parityDataService.getParities(parityInfos);
+    if (exParities.isEmpty && newParities.isEmpty) {
+      exParities = paritiesToUpdate;
+      newParities = paritiesToUpdate;
+    } else {
+      exParities = newParities;
+      newParities = paritiesToUpdate;
     }
+    isUpdated = true;
+    notifyListeners();
+    await Future.delayed(const Duration(seconds: 1), () {
+      isUpdated = false;
+      notifyListeners();
+    });
   }
 }

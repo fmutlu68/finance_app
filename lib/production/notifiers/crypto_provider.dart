@@ -123,7 +123,7 @@ class CryptoProvider extends ChangeNotifier {
         notifyListeners();
       });
     } catch (error) {
-      debugPrint("Catched an Error: $error");
+      print("Catched an Error: $error");
       print(error.runtimeType);
     }
   }

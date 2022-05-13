@@ -1,12 +1,21 @@
 enum ExchangeCurrency { turkishLira, dollar }
 
-extension CurrencyIconExtension on ExchangeCurrency {
+extension CurrencySymbolExtension on ExchangeCurrency {
   String get icon {
     switch (this) {
       case ExchangeCurrency.turkishLira:
         return "₺";
       case ExchangeCurrency.dollar:
         return "\$";
+    }
+  }
+
+  String get symbol {
+    switch (this) {
+      case ExchangeCurrency.turkishLira:
+        return "TL";
+      case ExchangeCurrency.dollar:
+        return "USD";
     }
   }
 }

@@ -20,44 +20,16 @@ class CurrencyProvider with ChangeNotifier {
     _currencyDataService = CurrencyDataService(NetworkManager.instance);
     currencyInfos = [
       CurrencyInfo(
-          name: "USD",
-          info: "Amerikan Doları",
-          path: "amerikan-dolari",
-          date: DateTime.now()),
+          name: "USD", info: "Amerikan Doları", path: "amerikan-dolari"),
+      CurrencyInfo(name: "EUR", info: "Euro", path: "euro"),
+      CurrencyInfo(name: "GBP", info: "Sterlin", path: "sterlin"),
+      CurrencyInfo(name: "RUB", info: "Rus Rublesi", path: "rus-rublesi"),
+      CurrencyInfo(name: "ILS", info: "İsrail Şekeli", path: "israil-sekeli"),
+      CurrencyInfo(name: "CHF", info: "İsviçre Frangı", path: "isvicre-frangi"),
+      CurrencyInfo(name: "BRL", info: "Brezilya Reali", path: "brezilya-reali"),
+      CurrencyInfo(name: "CNY", info: "Çin Yuanı", path: "cin-yuani"),
       CurrencyInfo(
-          name: "EUR", info: "Euro", path: "euro", date: DateTime.now()),
-      CurrencyInfo(
-          name: "GBP", info: "Sterlin", path: "sterlin", date: DateTime.now()),
-      CurrencyInfo(
-          name: "RUB",
-          info: "Rus Rublesi",
-          path: "rus-rublesi",
-          date: DateTime.now()),
-      CurrencyInfo(
-          name: "CHF",
-          info: "İsviçre Frangı",
-          path: "isvicre-frangi",
-          date: DateTime.now()),
-      CurrencyInfo(
-          name: "ILS",
-          info: "İsrail Şekeli",
-          path: "israil-sekeli",
-          date: DateTime.now()),
-      CurrencyInfo(
-          name: "BRL",
-          info: "Brezilya Reali",
-          path: "brezilya-reali",
-          date: DateTime.now()),
-      CurrencyInfo(
-          name: "CNY",
-          info: "Çin Yuanı",
-          path: "cin-yuani",
-          date: DateTime.now()),
-      CurrencyInfo(
-          name: "AZN",
-          info: "Azerbaycan Manatı",
-          path: "azerbaycan-manati",
-          date: DateTime.now()),
+          name: "AZN", info: "Azerbaycan Manatı", path: "azerbaycan-manati"),
     ];
     if (!_isStarted) {
       _isStarted = true;

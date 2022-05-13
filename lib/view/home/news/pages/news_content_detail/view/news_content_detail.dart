@@ -24,9 +24,11 @@ class _NewsContentDetailState extends State<NewsContentDetail> {
   @override
   void initState() {
     context.read<NewsProvider>().getNewsDetail(widget.news).then((value) {
-      setState(() {
-        detail = value;
-      });
+      if (mounted) {
+        setState(() {
+          detail = value;
+        });
+      }
     });
     super.initState();
   }
@@ -49,7 +51,7 @@ class _NewsContentDetailState extends State<NewsContentDetail> {
       width: double.infinity,
       height: 200,
       child: Hero(
-        tag: widget.news.link,
+        tag: widget.news.title + "---" + widget.news.link,
         child: Image.network(widget.news.imageUrl, fit: BoxFit.fill),
       ),
     );

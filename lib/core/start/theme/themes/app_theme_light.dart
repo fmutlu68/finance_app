@@ -22,5 +22,6 @@ class AppThemeLight extends AppTheme {
         bottomAppBarColor: Colors.black12,
       );
 
-  ColorScheme get _color => const ColorScheme.light().copyWith();
+  ColorScheme get _color =>
+      const ColorScheme.light().copyWith(error: Colors.blue);
 }

@@ -1,0 +1,19 @@
+{
+    "bottomBar" : {
+        "firstItem" : "Markets",
+        "secondItem" : "Data",
+        "thirdItem" : "News",
+        "fourthItem" : "My Portfolio",
+        "fifthItem" : "Options"
+    },
+    "optionsView" : {
+        "title" : "Options",
+        "darkMode" : "Dark Mode",
+        "lang" : "Language",
+        "frontend" : "Frontend Options",
+        "otherOptions" : "Other Options",
+        "notification" : "Notifications",
+        "statistics" : "Statistics",
+        "exit" : "Exit from App"
+    }
+}

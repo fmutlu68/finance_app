@@ -21,12 +21,17 @@ class CryptoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MarketCard(
-        isUpdated: isUpdated,
-        dailyGainAsPrice: newCrypto.dailyGainAsPrice!,
-        cardSubtitleText: "${newCrypto.price}",
-        cardTitleText: "${newCrypto.name} - ${cryptoInfo.info}",
-        exDailyGain: exCrypto.dailyGain!,
-        newDailyGain: newCrypto.dailyGain!,
-        selectedCurrency: ExchangeCurrency.dollar);
+      isUpdated: isUpdated,
+      dailyGainAsPrice: newCrypto.dailyGainAsPrice!,
+      cardSubtitleText: "${newCrypto.price}",
+      cardTitleText: "${newCrypto.name} - ${cryptoInfo.info}",
+      exDailyGain: exCrypto.dailyGain!,
+      newDailyGain: newCrypto.dailyGain!,
+      selectedCurrency: ExchangeCurrency.dollar,
+      onClicked: () {
+        // context.navigate(
+        //     NavigationRoute.navigateToParityItemDetail(, newParity));
+      },
+    );
   }
 }

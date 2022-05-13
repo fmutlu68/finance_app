@@ -1,6 +1,8 @@
 import 'package:finance_app/core/extensions/border_radius_extension.dart';
+import 'package:finance_app/core/extensions/navigation_extension.dart';
 import 'package:finance_app/core/extensions/padding_extension.dart';
 import 'package:finance_app/core/extensions/theme_extension.dart';
+import 'package:finance_app/core/start/navigation/routes/navigation_route.dart';
 import 'package:finance_app/view/home/news/components/category_news_column_item.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +36,7 @@ class CategoryNewsColumn<T extends INews> extends StatelessWidget {
     return Column(
       children: news.isEmpty
           ? [
-              buildGoDetailTile(),
+              buildGoDetailTile(context),
               Padding(
                 padding: context.veryLowHeightPadding,
                 child: Center(
@@ -45,7 +47,7 @@ class CategoryNewsColumn<T extends INews> extends StatelessWidget {
               )
             ]
           : [
-              buildGoDetailTile(),
+              buildGoDetailTile(context),
               ...news
                   .getRange(0, 5)
                   .map<Widget>((e) => CategoryNewsColumnItem<T>(news: e))
@@ -54,13 +56,18 @@ class CategoryNewsColumn<T extends INews> extends StatelessWidget {
     );
   }
 
-  Card buildGoDetailTile() {
+  Card buildGoDetailTile(BuildContext context) {
     return Card(
       child: ListTile(
         leading: Text(categoryName),
         dense: true,
-        trailing:
-            IconButton(onPressed: () {}, icon: const Icon(Icons.open_in_new)),
+        trailing: IconButton(
+          onPressed: () {
+            context.navigate(
+                NavigationRoute.navigateToCategoryNews(news, categoryName));
+          },
+          icon: const Icon(Icons.open_in_new),
+        ),
       ),
     );
   }

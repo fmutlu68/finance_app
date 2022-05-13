@@ -6,19 +6,19 @@ import 'package:flutter_test/flutter_test.dart';
 
 main() {
   setUp(() {});
-  test("Email Regexp", () async {
+  test("Doviz com test", () async {
     ICurrencyDataService currencyDataService =
         CurrencyDataService(NetworkManager.instance);
-    await currencyDataService.getCurrency(CurrencyInfo(
-        name: "USD", path: "amerikan-dolari", date: DateTime.now(), info: ""));
+    await currencyDataService.getCurrency(
+        CurrencyInfo(name: "USD", path: "amerikan-dolari", info: ""));
     CurrencyDataService(NetworkManager.instance);
-    await currencyDataService.getCurrency(CurrencyInfo(
-        name: "RUB", path: "rus-rublesi", date: DateTime.now(), info: ''));
-    await currencyDataService.getCurrency(CurrencyInfo(
-        name: "EUR", path: "euro", date: DateTime.now(), info: ''));
-    await currencyDataService.getCurrency(CurrencyInfo(
-        name: "GBP", path: "sterlin", date: DateTime.now(), info: ''));
-    await currencyDataService.getCurrency(CurrencyInfo(
-        name: "KWD", path: "kuveyt-dinari", date: DateTime.now(), info: ''));
+    await currencyDataService
+        .getCurrency(CurrencyInfo(name: "RUB", path: "rus-rublesi", info: ''));
+    await currencyDataService
+        .getCurrency(CurrencyInfo(name: "EUR", path: "euro", info: ''));
+    await currencyDataService
+        .getCurrency(CurrencyInfo(name: "GBP", path: "sterlin", info: ''));
+    await currencyDataService.getCurrency(
+        CurrencyInfo(name: "KWD", path: "kuveyt-dinari", info: ''));
   });
 }

@@ -1,4 +1,6 @@
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
+import 'package:finance_app/core/extensions/lang_extension.dart';
+import 'package:finance_app/core/start/lang/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:unicons/unicons.dart';
 
@@ -34,23 +36,23 @@ class _HomeBottomBarState extends State<HomeBottomBar> {
       items: [
         CustomNavigationBarItem(
           icon: const Icon(UniconsSolid.chart),
-          selectedTitle: const Text("Piyasalar"),
+          selectedTitle: Text(LocaleKeys.bottomBar_firstItem.locale),
         ),
         CustomNavigationBarItem(
           icon: const Icon(Icons.dashboard),
-          selectedTitle: const Text("Veriler"),
+          selectedTitle: Text(LocaleKeys.bottomBar_secondItem.locale),
         ),
         CustomNavigationBarItem(
-          icon: const Icon(UniconsLine.paperclip),
-          selectedTitle: const Text("Haberler"),
+          icon: const Icon(Icons.newspaper),
+          selectedTitle: Text(LocaleKeys.bottomBar_thirdItem.locale),
         ),
         CustomNavigationBarItem(
           icon: const Icon(Icons.account_balance_wallet),
-          selectedTitle: const Text("Portfolyom"),
+          selectedTitle: Text(LocaleKeys.bottomBar_fourthItem.locale),
         ),
         CustomNavigationBarItem(
           icon: const Icon(Icons.settings),
-          selectedTitle: const Text("Seçenekler"),
+          selectedTitle: Text(LocaleKeys.bottomBar_fifthItem.locale),
         ),
       ],
       currentIndex: widget.selectedPageIndex,

@@ -10,6 +10,7 @@ abstract class ICoreDio {
     required TParserModel parserModel,
     data,
     Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? headers,
   });
 
   Future<String> getOnlyHtml({required String path});

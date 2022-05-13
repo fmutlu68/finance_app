@@ -1,0 +1,19 @@
+{
+    "bottomBar" : {
+        "firstItem" : "Piyasalar",
+        "secondItem" : "Veriler",
+        "thirdItem" : "Haberler",
+        "fourthItem" : "Portfolyom",
+        "fifthItem" : "Seçenekler"
+    },
+    "optionsView" : {
+        "title" : "Seçenekler",
+        "darkMode" : "Gece Modu",
+        "lang" : "Dil",
+        "frontend" : "Önyüz Seçenekleri",
+        "otherOptions" : "Diğer Seçenekler",
+        "notification" : "Bildirimler",
+        "statistics" : "İstatistikler",
+        "exit" : "Uygulamadan Çık"
+    }
+}
