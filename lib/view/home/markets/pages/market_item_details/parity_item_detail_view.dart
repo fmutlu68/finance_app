@@ -1,4 +1,3 @@
-import 'package:finance_app/production/features/finance_data/models/res/parity_history.dart';
 import 'package:finance_app/production/notifiers/parity_provider.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +6,7 @@ import 'package:finance_app/production/features/finance_data/models/res/parity.d
 import 'package:provider/provider.dart';
 
 import '../../../../../production/constant/enum/currency_enum.dart';
+import '../../../../../production/features/finance_data/models/res/history/parity_history.dart';
 import '../market_item_detail/view/market_item_detail_view.dart';
 
 class ParityItemDetailView extends StatefulWidget {

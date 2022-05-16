@@ -13,7 +13,7 @@ import 'package:finance_app/production/notifiers/commodity_provider.dart';
 import 'package:finance_app/production/notifiers/crypto_provider.dart';
 import 'package:finance_app/production/notifiers/currency_provider.dart';
 import 'package:finance_app/production/notifiers/economic_calendar_provider.dart';
-import 'package:finance_app/production/notifiers/history_data_provider_2.dart';
+import 'package:finance_app/production/notifiers/history_data_provider.dart';
 import 'package:finance_app/production/notifiers/news_provider.dart';
 import 'package:finance_app/production/notifiers/parity_provider.dart';
 import 'package:finance_app/view/home/home/view/home_view.dart';

@@ -15,7 +15,7 @@ abstract class _MarketsViewModelBase with Store, BaseViewModel {
   void onDispose() {}
 
   @override
-  void setContext(BuildContext ctx) => context = ctx;
+  void setContext(BuildContext ctx) => pageContext = ctx;
 
   @override
   void init() {}

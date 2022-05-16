@@ -8,10 +8,10 @@ main() {
   setUp(() {});
   test("Doviz com test", () async {
     ICurrencyDataService currencyDataService =
-        CurrencyDataService(NetworkManager.instance);
+        CurrencyDataService(manager: NetworkManager.instance);
     await currencyDataService.getCurrency(
         CurrencyInfo(name: "USD", path: "amerikan-dolari", info: ""));
-    CurrencyDataService(NetworkManager.instance);
+    CurrencyDataService(manager: NetworkManager.instance);
     await currencyDataService
         .getCurrency(CurrencyInfo(name: "RUB", path: "rus-rublesi", info: ''));
     await currencyDataService

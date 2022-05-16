@@ -117,7 +117,7 @@ extension MarketItemCurrencyInfoContainer<
 
   Widget get appBarCurrencyTitle {
     return Text(
-      "${widget.info.name} - ${widget.info.info}",
+      "${widget.info.hideName ?? false ? "" : (widget.info.nameToShow ?? widget.info.name) + " - "}${widget.info.info}",
       style: getUpdateableStyle(
         context,
         widget.exMarketItem.dailyGain,

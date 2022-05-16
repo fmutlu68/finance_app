@@ -1,8 +1,11 @@
+import 'package:finance_app/core/base/state/base_view_state.dart';
 import 'package:finance_app/core/base/widget/base_view.dart';
 import 'package:finance_app/view/home/components/home_bottom_bar.dart';
 import 'package:finance_app/view/home/home/view_model/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+
+import '../../components/basket_items_slider.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -11,7 +14,7 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _HomeViewState extends BaseViewState<HomeView> {
   late HomeViewModel viewModel;
 
   @override
@@ -36,16 +39,21 @@ class _HomeViewState extends State<HomeView> {
         return viewModel.currentRoute?.isFirst == true ||
             exCloseable == viewModel.appCloseable && exCloseable == true;
       },
-      onPageBuilder: (context, model) => Scaffold(
-        body: Navigator(
-          key: viewModel.navigatorKey,
-          observers: [viewModel.homeViewObserver],
-          onGenerateRoute: viewModel.generateRoute,
-        ),
-        bottomNavigationBar: Observer(
-          builder: (_) => HomeBottomBar(
-            onPageChanged: viewModel.onPageChanged,
-            selectedPageIndex: viewModel.selectedPage,
+      onPageBuilder: (context, model) => SafeArea(
+        child: Scaffold(
+          appBar: PreferredSize(
+              child: const BasketItemsSlider(),
+              preferredSize: Size(double.infinity, calculateDynamicHeight(7))),
+          body: Navigator(
+            key: viewModel.navigatorKey,
+            observers: [viewModel.homeViewObserver],
+            onGenerateRoute: viewModel.generateRoute,
+          ),
+          bottomNavigationBar: Observer(
+            builder: (_) => HomeBottomBar(
+              onPageChanged: viewModel.onPageChanged,
+              selectedPageIndex: viewModel.selectedPage,
+            ),
           ),
         ),
       ),

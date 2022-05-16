@@ -1,43 +1,46 @@
 import 'package:finance_app/production/constant/enum/graph_time_enum.dart';
 import 'package:finance_app/production/features/finance_data/base/model/i_history_data.dart';
-import 'package:finance_app/production/features/finance_data/models/req/history_info.dart';
-import 'package:finance_app/production/features/finance_data/services/currency_graph_data_service.dart';
 import 'package:finance_app/production/models/data/history_data_info.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/start/network/service/network_manager.dart';
 import '../features/finance_data/base/service/i_history_data_service.dart';
-import '../features/finance_data/models/res/currency_history.dart';
+import '../features/finance_data/models/req/history_info.dart';
+import '../features/finance_data/services/graph_data_service.dart';
 
 class HistoryDataProvider extends ChangeNotifier {
   late final Map<HistoryDataInfo, List<IHistoryData>> data;
-  late final IHistoryDataService<HistoryInfo, CurrencyHistory>
-      _currencyHistoryDataService;
+  late final IHistoryDataService _historyDataService;
 
   HistoryDataProvider() {
     data = {};
-    _currencyHistoryDataService =
-        CurrencyHistoryDataService(manager: NetworkManager.instance);
+    _historyDataService = HistoryDataService(manager: NetworkManager.instance);
   }
 
-  Future<List<T>> loadGraphData<T extends IHistoryData<T>>(
-      HistoryDataInfo dataInfo) async {
+  Future<List<R>> loadGraphData<R extends IHistoryData<R>>(
+      HistoryDataInfo<HistoryInfo> dataInfo, R parserModel) async {
     try {
       if (_checkIfExistHistoryInfo(dataInfo)) {
-        return data[_getDataInfo(dataInfo)] as List<T>;
+        return data[_getDataInfo(dataInfo)] as List<R>;
       } else {
         List<IHistoryData> newDataList;
-        if (dataInfo.graphTime == GraphTime.daily) {
-          newDataList = await _currencyHistoryDataService
-              .getDailyGraph(HistoryInfo(name: dataInfo.model.name));
+        if (dataInfo.graphTime == GraphTime.last2Hours) {
+          newDataList = await _historyDataService
+              .getLast2HoursGraph<HistoryInfo, R>(dataInfo.model, parserModel);
+        } else if (dataInfo.graphTime == GraphTime.daily) {
+          newDataList = await _historyDataService.getDailyGraph<HistoryInfo, R>(
+              dataInfo.model, parserModel);
         } else {
           List<DateTime> dates = dataInfo.graphTime.dates;
-          newDataList = await _currencyHistoryDataService.getGraphBetweenDate(
-              HistoryInfo(name: dataInfo.model.name), dates[0], dates[1]);
+          newDataList =
+              await _historyDataService.getGraphBetweenDate<HistoryInfo, R>(
+                  dataInfo.model, parserModel, dates[0], dates[1]);
         }
-        data[dataInfo] = newDataList as List<T>;
+        if (data[dataInfo] == null) {
+          data[dataInfo] = newDataList as List<R>;
+        }
         notifyListeners();
-        return newDataList;
+        return newDataList as List<R>;
       }
     } catch (e) {
       print("Catched an error: $e");

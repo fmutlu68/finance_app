@@ -51,6 +51,14 @@ class _$NavigationRouteTearOff {
       parity,
     );
   }
+
+  NavigationRouteCommodityItemDetail navigateToCommodityItemDetail(
+      CommodityInfo info, ICommodity commodity) {
+    return NavigationRouteCommodityItemDetail(
+      info,
+      commodity,
+    );
+  }
 }
 
 /// @nodoc
@@ -68,6 +76,8 @@ mixin _$NavigationRoute {
         navigateToCurrencyItemDetail,
     required TResult Function(ParityInfo info, Parity parity)
         navigateToParityItemDetail,
+    required TResult Function(CommodityInfo info, ICommodity commodity)
+        navigateToCommodityItemDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -79,6 +89,8 @@ mixin _$NavigationRoute {
         navigateToCurrencyItemDetail,
     TResult Function(ParityInfo info, Parity parity)?
         navigateToParityItemDetail,
+    TResult Function(CommodityInfo info, ICommodity commodity)?
+        navigateToCommodityItemDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,6 +102,8 @@ mixin _$NavigationRoute {
         navigateToCurrencyItemDetail,
     TResult Function(ParityInfo info, Parity parity)?
         navigateToParityItemDetail,
+    TResult Function(CommodityInfo info, ICommodity commodity)?
+        navigateToCommodityItemDetail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -104,6 +118,8 @@ mixin _$NavigationRoute {
         navigateToCurrencyItemDetail,
     required TResult Function(NavigationRouteParityItemDetail value)
         navigateToParityItemDetail,
+    required TResult Function(NavigationRouteCommodityItemDetail value)
+        navigateToCommodityItemDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -115,6 +131,8 @@ mixin _$NavigationRoute {
         navigateToCurrencyItemDetail,
     TResult Function(NavigationRouteParityItemDetail value)?
         navigateToParityItemDetail,
+    TResult Function(NavigationRouteCommodityItemDetail value)?
+        navigateToCommodityItemDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -126,6 +144,8 @@ mixin _$NavigationRoute {
         navigateToCurrencyItemDetail,
     TResult Function(NavigationRouteParityItemDetail value)?
         navigateToParityItemDetail,
+    TResult Function(NavigationRouteCommodityItemDetail value)?
+        navigateToCommodityItemDetail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -197,6 +217,8 @@ class _$NavigationRouteHome implements NavigationRouteHome {
         navigateToCurrencyItemDetail,
     required TResult Function(ParityInfo info, Parity parity)
         navigateToParityItemDetail,
+    required TResult Function(CommodityInfo info, ICommodity commodity)
+        navigateToCommodityItemDetail,
   }) {
     return navigateToHome();
   }
@@ -211,6 +233,8 @@ class _$NavigationRouteHome implements NavigationRouteHome {
         navigateToCurrencyItemDetail,
     TResult Function(ParityInfo info, Parity parity)?
         navigateToParityItemDetail,
+    TResult Function(CommodityInfo info, ICommodity commodity)?
+        navigateToCommodityItemDetail,
   }) {
     return navigateToHome?.call();
   }
@@ -225,6 +249,8 @@ class _$NavigationRouteHome implements NavigationRouteHome {
         navigateToCurrencyItemDetail,
     TResult Function(ParityInfo info, Parity parity)?
         navigateToParityItemDetail,
+    TResult Function(CommodityInfo info, ICommodity commodity)?
+        navigateToCommodityItemDetail,
     required TResult orElse(),
   }) {
     if (navigateToHome != null) {
@@ -245,6 +271,8 @@ class _$NavigationRouteHome implements NavigationRouteHome {
         navigateToCurrencyItemDetail,
     required TResult Function(NavigationRouteParityItemDetail value)
         navigateToParityItemDetail,
+    required TResult Function(NavigationRouteCommodityItemDetail value)
+        navigateToCommodityItemDetail,
   }) {
     return navigateToHome(this);
   }
@@ -259,6 +287,8 @@ class _$NavigationRouteHome implements NavigationRouteHome {
         navigateToCurrencyItemDetail,
     TResult Function(NavigationRouteParityItemDetail value)?
         navigateToParityItemDetail,
+    TResult Function(NavigationRouteCommodityItemDetail value)?
+        navigateToCommodityItemDetail,
   }) {
     return navigateToHome?.call(this);
   }
@@ -273,6 +303,8 @@ class _$NavigationRouteHome implements NavigationRouteHome {
         navigateToCurrencyItemDetail,
     TResult Function(NavigationRouteParityItemDetail value)?
         navigateToParityItemDetail,
+    TResult Function(NavigationRouteCommodityItemDetail value)?
+        navigateToCommodityItemDetail,
     required TResult orElse(),
   }) {
     if (navigateToHome != null) {
@@ -361,6 +393,8 @@ class _$NavigationRouteNewsDetail implements NavigationRouteNewsDetail {
         navigateToCurrencyItemDetail,
     required TResult Function(ParityInfo info, Parity parity)
         navigateToParityItemDetail,
+    required TResult Function(CommodityInfo info, ICommodity commodity)
+        navigateToCommodityItemDetail,
   }) {
     return navigateToNewsDetail(news);
   }
@@ -375,6 +409,8 @@ class _$NavigationRouteNewsDetail implements NavigationRouteNewsDetail {
         navigateToCurrencyItemDetail,
     TResult Function(ParityInfo info, Parity parity)?
         navigateToParityItemDetail,
+    TResult Function(CommodityInfo info, ICommodity commodity)?
+        navigateToCommodityItemDetail,
   }) {
     return navigateToNewsDetail?.call(news);
   }
@@ -389,6 +425,8 @@ class _$NavigationRouteNewsDetail implements NavigationRouteNewsDetail {
         navigateToCurrencyItemDetail,
     TResult Function(ParityInfo info, Parity parity)?
         navigateToParityItemDetail,
+    TResult Function(CommodityInfo info, ICommodity commodity)?
+        navigateToCommodityItemDetail,
     required TResult orElse(),
   }) {
     if (navigateToNewsDetail != null) {
@@ -409,6 +447,8 @@ class _$NavigationRouteNewsDetail implements NavigationRouteNewsDetail {
         navigateToCurrencyItemDetail,
     required TResult Function(NavigationRouteParityItemDetail value)
         navigateToParityItemDetail,
+    required TResult Function(NavigationRouteCommodityItemDetail value)
+        navigateToCommodityItemDetail,
   }) {
     return navigateToNewsDetail(this);
   }
@@ -423,6 +463,8 @@ class _$NavigationRouteNewsDetail implements NavigationRouteNewsDetail {
         navigateToCurrencyItemDetail,
     TResult Function(NavigationRouteParityItemDetail value)?
         navigateToParityItemDetail,
+    TResult Function(NavigationRouteCommodityItemDetail value)?
+        navigateToCommodityItemDetail,
   }) {
     return navigateToNewsDetail?.call(this);
   }
@@ -437,6 +479,8 @@ class _$NavigationRouteNewsDetail implements NavigationRouteNewsDetail {
         navigateToCurrencyItemDetail,
     TResult Function(NavigationRouteParityItemDetail value)?
         navigateToParityItemDetail,
+    TResult Function(NavigationRouteCommodityItemDetail value)?
+        navigateToCommodityItemDetail,
     required TResult orElse(),
   }) {
     if (navigateToNewsDetail != null) {
@@ -542,6 +586,8 @@ class _$NavigationRouteCategoryNews implements NavigationRouteCategoryNews {
         navigateToCurrencyItemDetail,
     required TResult Function(ParityInfo info, Parity parity)
         navigateToParityItemDetail,
+    required TResult Function(CommodityInfo info, ICommodity commodity)
+        navigateToCommodityItemDetail,
   }) {
     return navigateToCategoryNews(news, title);
   }
@@ -556,6 +602,8 @@ class _$NavigationRouteCategoryNews implements NavigationRouteCategoryNews {
         navigateToCurrencyItemDetail,
     TResult Function(ParityInfo info, Parity parity)?
         navigateToParityItemDetail,
+    TResult Function(CommodityInfo info, ICommodity commodity)?
+        navigateToCommodityItemDetail,
   }) {
     return navigateToCategoryNews?.call(news, title);
   }
@@ -570,6 +618,8 @@ class _$NavigationRouteCategoryNews implements NavigationRouteCategoryNews {
         navigateToCurrencyItemDetail,
     TResult Function(ParityInfo info, Parity parity)?
         navigateToParityItemDetail,
+    TResult Function(CommodityInfo info, ICommodity commodity)?
+        navigateToCommodityItemDetail,
     required TResult orElse(),
   }) {
     if (navigateToCategoryNews != null) {
@@ -590,6 +640,8 @@ class _$NavigationRouteCategoryNews implements NavigationRouteCategoryNews {
         navigateToCurrencyItemDetail,
     required TResult Function(NavigationRouteParityItemDetail value)
         navigateToParityItemDetail,
+    required TResult Function(NavigationRouteCommodityItemDetail value)
+        navigateToCommodityItemDetail,
   }) {
     return navigateToCategoryNews(this);
   }
@@ -604,6 +656,8 @@ class _$NavigationRouteCategoryNews implements NavigationRouteCategoryNews {
         navigateToCurrencyItemDetail,
     TResult Function(NavigationRouteParityItemDetail value)?
         navigateToParityItemDetail,
+    TResult Function(NavigationRouteCommodityItemDetail value)?
+        navigateToCommodityItemDetail,
   }) {
     return navigateToCategoryNews?.call(this);
   }
@@ -618,6 +672,8 @@ class _$NavigationRouteCategoryNews implements NavigationRouteCategoryNews {
         navigateToCurrencyItemDetail,
     TResult Function(NavigationRouteParityItemDetail value)?
         navigateToParityItemDetail,
+    TResult Function(NavigationRouteCommodityItemDetail value)?
+        navigateToCommodityItemDetail,
     required TResult orElse(),
   }) {
     if (navigateToCategoryNews != null) {
@@ -726,6 +782,8 @@ class _$NavigationRouteCurrencyItemDetail
         navigateToCurrencyItemDetail,
     required TResult Function(ParityInfo info, Parity parity)
         navigateToParityItemDetail,
+    required TResult Function(CommodityInfo info, ICommodity commodity)
+        navigateToCommodityItemDetail,
   }) {
     return navigateToCurrencyItemDetail(info, currency);
   }
@@ -740,6 +798,8 @@ class _$NavigationRouteCurrencyItemDetail
         navigateToCurrencyItemDetail,
     TResult Function(ParityInfo info, Parity parity)?
         navigateToParityItemDetail,
+    TResult Function(CommodityInfo info, ICommodity commodity)?
+        navigateToCommodityItemDetail,
   }) {
     return navigateToCurrencyItemDetail?.call(info, currency);
   }
@@ -754,6 +814,8 @@ class _$NavigationRouteCurrencyItemDetail
         navigateToCurrencyItemDetail,
     TResult Function(ParityInfo info, Parity parity)?
         navigateToParityItemDetail,
+    TResult Function(CommodityInfo info, ICommodity commodity)?
+        navigateToCommodityItemDetail,
     required TResult orElse(),
   }) {
     if (navigateToCurrencyItemDetail != null) {
@@ -774,6 +836,8 @@ class _$NavigationRouteCurrencyItemDetail
         navigateToCurrencyItemDetail,
     required TResult Function(NavigationRouteParityItemDetail value)
         navigateToParityItemDetail,
+    required TResult Function(NavigationRouteCommodityItemDetail value)
+        navigateToCommodityItemDetail,
   }) {
     return navigateToCurrencyItemDetail(this);
   }
@@ -788,6 +852,8 @@ class _$NavigationRouteCurrencyItemDetail
         navigateToCurrencyItemDetail,
     TResult Function(NavigationRouteParityItemDetail value)?
         navigateToParityItemDetail,
+    TResult Function(NavigationRouteCommodityItemDetail value)?
+        navigateToCommodityItemDetail,
   }) {
     return navigateToCurrencyItemDetail?.call(this);
   }
@@ -802,6 +868,8 @@ class _$NavigationRouteCurrencyItemDetail
         navigateToCurrencyItemDetail,
     TResult Function(NavigationRouteParityItemDetail value)?
         navigateToParityItemDetail,
+    TResult Function(NavigationRouteCommodityItemDetail value)?
+        navigateToCommodityItemDetail,
     required TResult orElse(),
   }) {
     if (navigateToCurrencyItemDetail != null) {
@@ -911,6 +979,8 @@ class _$NavigationRouteParityItemDetail
         navigateToCurrencyItemDetail,
     required TResult Function(ParityInfo info, Parity parity)
         navigateToParityItemDetail,
+    required TResult Function(CommodityInfo info, ICommodity commodity)
+        navigateToCommodityItemDetail,
   }) {
     return navigateToParityItemDetail(info, parity);
   }
@@ -925,6 +995,8 @@ class _$NavigationRouteParityItemDetail
         navigateToCurrencyItemDetail,
     TResult Function(ParityInfo info, Parity parity)?
         navigateToParityItemDetail,
+    TResult Function(CommodityInfo info, ICommodity commodity)?
+        navigateToCommodityItemDetail,
   }) {
     return navigateToParityItemDetail?.call(info, parity);
   }
@@ -939,6 +1011,8 @@ class _$NavigationRouteParityItemDetail
         navigateToCurrencyItemDetail,
     TResult Function(ParityInfo info, Parity parity)?
         navigateToParityItemDetail,
+    TResult Function(CommodityInfo info, ICommodity commodity)?
+        navigateToCommodityItemDetail,
     required TResult orElse(),
   }) {
     if (navigateToParityItemDetail != null) {
@@ -959,6 +1033,8 @@ class _$NavigationRouteParityItemDetail
         navigateToCurrencyItemDetail,
     required TResult Function(NavigationRouteParityItemDetail value)
         navigateToParityItemDetail,
+    required TResult Function(NavigationRouteCommodityItemDetail value)
+        navigateToCommodityItemDetail,
   }) {
     return navigateToParityItemDetail(this);
   }
@@ -973,6 +1049,8 @@ class _$NavigationRouteParityItemDetail
         navigateToCurrencyItemDetail,
     TResult Function(NavigationRouteParityItemDetail value)?
         navigateToParityItemDetail,
+    TResult Function(NavigationRouteCommodityItemDetail value)?
+        navigateToCommodityItemDetail,
   }) {
     return navigateToParityItemDetail?.call(this);
   }
@@ -987,6 +1065,8 @@ class _$NavigationRouteParityItemDetail
         navigateToCurrencyItemDetail,
     TResult Function(NavigationRouteParityItemDetail value)?
         navigateToParityItemDetail,
+    TResult Function(NavigationRouteCommodityItemDetail value)?
+        navigateToCommodityItemDetail,
     required TResult orElse(),
   }) {
     if (navigateToParityItemDetail != null) {
@@ -1004,5 +1084,204 @@ abstract class NavigationRouteParityItemDetail implements NavigationRoute {
   Parity get parity;
   @JsonKey(ignore: true)
   $NavigationRouteParityItemDetailCopyWith<NavigationRouteParityItemDetail>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $NavigationRouteCommodityItemDetailCopyWith<$Res> {
+  factory $NavigationRouteCommodityItemDetailCopyWith(
+          NavigationRouteCommodityItemDetail value,
+          $Res Function(NavigationRouteCommodityItemDetail) then) =
+      _$NavigationRouteCommodityItemDetailCopyWithImpl<$Res>;
+  $Res call({CommodityInfo info, ICommodity commodity});
+}
+
+/// @nodoc
+class _$NavigationRouteCommodityItemDetailCopyWithImpl<$Res>
+    extends _$NavigationRouteCopyWithImpl<$Res>
+    implements $NavigationRouteCommodityItemDetailCopyWith<$Res> {
+  _$NavigationRouteCommodityItemDetailCopyWithImpl(
+      NavigationRouteCommodityItemDetail _value,
+      $Res Function(NavigationRouteCommodityItemDetail) _then)
+      : super(_value, (v) => _then(v as NavigationRouteCommodityItemDetail));
+
+  @override
+  NavigationRouteCommodityItemDetail get _value =>
+      super._value as NavigationRouteCommodityItemDetail;
+
+  @override
+  $Res call({
+    Object? info = freezed,
+    Object? commodity = freezed,
+  }) {
+    return _then(NavigationRouteCommodityItemDetail(
+      info == freezed
+          ? _value.info
+          : info // ignore: cast_nullable_to_non_nullable
+              as CommodityInfo,
+      commodity == freezed
+          ? _value.commodity
+          : commodity // ignore: cast_nullable_to_non_nullable
+              as ICommodity,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NavigationRouteCommodityItemDetail
+    implements NavigationRouteCommodityItemDetail {
+  const _$NavigationRouteCommodityItemDetail(this.info, this.commodity);
+
+  @override
+  final CommodityInfo info;
+  @override
+  final ICommodity commodity;
+
+  @override
+  String toString() {
+    return 'NavigationRoute.navigateToCommodityItemDetail(info: $info, commodity: $commodity)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is NavigationRouteCommodityItemDetail &&
+            const DeepCollectionEquality().equals(other.info, info) &&
+            const DeepCollectionEquality().equals(other.commodity, commodity));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(info),
+      const DeepCollectionEquality().hash(commodity));
+
+  @JsonKey(ignore: true)
+  @override
+  $NavigationRouteCommodityItemDetailCopyWith<
+          NavigationRouteCommodityItemDetail>
+      get copyWith => _$NavigationRouteCommodityItemDetailCopyWithImpl<
+          NavigationRouteCommodityItemDetail>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() navigateToHome,
+    required TResult Function(INews news) navigateToNewsDetail,
+    required TResult Function(List<INews> news, String title)
+        navigateToCategoryNews,
+    required TResult Function(CurrencyInfo info, Currency currency)
+        navigateToCurrencyItemDetail,
+    required TResult Function(ParityInfo info, Parity parity)
+        navigateToParityItemDetail,
+    required TResult Function(CommodityInfo info, ICommodity commodity)
+        navigateToCommodityItemDetail,
+  }) {
+    return navigateToCommodityItemDetail(info, commodity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? navigateToHome,
+    TResult Function(INews news)? navigateToNewsDetail,
+    TResult Function(List<INews> news, String title)? navigateToCategoryNews,
+    TResult Function(CurrencyInfo info, Currency currency)?
+        navigateToCurrencyItemDetail,
+    TResult Function(ParityInfo info, Parity parity)?
+        navigateToParityItemDetail,
+    TResult Function(CommodityInfo info, ICommodity commodity)?
+        navigateToCommodityItemDetail,
+  }) {
+    return navigateToCommodityItemDetail?.call(info, commodity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? navigateToHome,
+    TResult Function(INews news)? navigateToNewsDetail,
+    TResult Function(List<INews> news, String title)? navigateToCategoryNews,
+    TResult Function(CurrencyInfo info, Currency currency)?
+        navigateToCurrencyItemDetail,
+    TResult Function(ParityInfo info, Parity parity)?
+        navigateToParityItemDetail,
+    TResult Function(CommodityInfo info, ICommodity commodity)?
+        navigateToCommodityItemDetail,
+    required TResult orElse(),
+  }) {
+    if (navigateToCommodityItemDetail != null) {
+      return navigateToCommodityItemDetail(info, commodity);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NavigationRouteHome value) navigateToHome,
+    required TResult Function(NavigationRouteNewsDetail value)
+        navigateToNewsDetail,
+    required TResult Function(NavigationRouteCategoryNews value)
+        navigateToCategoryNews,
+    required TResult Function(NavigationRouteCurrencyItemDetail value)
+        navigateToCurrencyItemDetail,
+    required TResult Function(NavigationRouteParityItemDetail value)
+        navigateToParityItemDetail,
+    required TResult Function(NavigationRouteCommodityItemDetail value)
+        navigateToCommodityItemDetail,
+  }) {
+    return navigateToCommodityItemDetail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(NavigationRouteHome value)? navigateToHome,
+    TResult Function(NavigationRouteNewsDetail value)? navigateToNewsDetail,
+    TResult Function(NavigationRouteCategoryNews value)? navigateToCategoryNews,
+    TResult Function(NavigationRouteCurrencyItemDetail value)?
+        navigateToCurrencyItemDetail,
+    TResult Function(NavigationRouteParityItemDetail value)?
+        navigateToParityItemDetail,
+    TResult Function(NavigationRouteCommodityItemDetail value)?
+        navigateToCommodityItemDetail,
+  }) {
+    return navigateToCommodityItemDetail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NavigationRouteHome value)? navigateToHome,
+    TResult Function(NavigationRouteNewsDetail value)? navigateToNewsDetail,
+    TResult Function(NavigationRouteCategoryNews value)? navigateToCategoryNews,
+    TResult Function(NavigationRouteCurrencyItemDetail value)?
+        navigateToCurrencyItemDetail,
+    TResult Function(NavigationRouteParityItemDetail value)?
+        navigateToParityItemDetail,
+    TResult Function(NavigationRouteCommodityItemDetail value)?
+        navigateToCommodityItemDetail,
+    required TResult orElse(),
+  }) {
+    if (navigateToCommodityItemDetail != null) {
+      return navigateToCommodityItemDetail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NavigationRouteCommodityItemDetail implements NavigationRoute {
+  const factory NavigationRouteCommodityItemDetail(
+          CommodityInfo info, ICommodity commodity) =
+      _$NavigationRouteCommodityItemDetail;
+
+  CommodityInfo get info;
+  ICommodity get commodity;
+  @JsonKey(ignore: true)
+  $NavigationRouteCommodityItemDetailCopyWith<
+          NavigationRouteCommodityItemDetail>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -29,10 +29,7 @@ class _HomeBottomBarState extends State<HomeBottomBar> {
       unSelectedColor:
           context.theme.bottomNavigationBarTheme.unselectedItemColor,
       backgroundColor: context.theme.bottomNavigationBarTheme.backgroundColor!,
-      borderRadius: const BorderRadius.only(
-        topLeft: Radius.circular(5),
-        topRight: Radius.circular(5),
-      ),
+      borderRadius: const Radius.circular(5),
       items: [
         CustomNavigationBarItem(
           icon: const Icon(UniconsSolid.chart),

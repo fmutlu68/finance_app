@@ -7,7 +7,7 @@ class OptionsViewModel = _OptionsViewModelBase with _$OptionsViewModel;
 
 abstract class _OptionsViewModelBase with Store, BaseViewModel {
   @override
-  void setContext(BuildContext ctx) => context = ctx;
+  void setContext(BuildContext ctx) => pageContext = ctx;
 
   @override
   void init() {}

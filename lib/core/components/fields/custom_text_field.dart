@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../base/widget/base_widget.dart';
-import '../../../models/components/fields/text_field_properties.dart';
+import '../../base/widget/base_widget.dart';
+import '../../models/components/fields/text_field_properties.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextFieldProperties textFieldProperties;

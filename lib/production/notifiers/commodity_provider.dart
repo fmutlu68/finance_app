@@ -17,26 +17,30 @@ class CommodityProvider with ChangeNotifier {
   bool isUpdated = false;
 
   CommodityProvider() {
-    _commodityDataService = CommodityDataService(NetworkManager.instance);
+    _commodityDataService =
+        CommodityDataService(manager: NetworkManager.instance);
     commodityInfos = [
       CommodityInfo(name: "XAU-USD", info: "Ons Altın", path: "altin-ons"),
       CommodityInfo(
           name: "gram-altin",
           info: "Gram Altın",
           path: "gram-altin",
-          nameToShow: "GAU-TRY"),
+          nameToShow: "GAU-TRY",
+          graphSymbol: "SGLD"),
       CommodityInfo(
           name: "ceyrek-altin",
           info: "Çeyrek Altın",
           path: "ceyrek-altin",
-          hideName: true),
+          hideName: true,
+          graphSymbol: "SGCEYREK"),
       CommodityInfo(name: "BRENT", info: "Brent Petrol", path: "brent-petrol"),
       CommodityInfo(name: "XAG-USD", info: "Ons Gümüş", path: "gumus-ons"),
       CommodityInfo(
           name: "gumus",
           info: "Gram Gümüş",
           path: "gumus",
-          nameToShow: "XAG-TRY"),
+          nameToShow: "XAG-TRY",
+          graphSymbol: "SXAG"),
       CommodityInfo(name: "XPT-USD", info: "Platinum", path: "platinum"),
       CommodityInfo(name: "XPD-USD", info: "Paladyum", path: "paladyum"),
     ];
@@ -72,6 +76,8 @@ class CommodityProvider with ChangeNotifier {
       });
     } catch (error) {
       print("Catched an Error: $error");
+      isUpdated = false;
+      notifyListeners();
     }
   }
 }

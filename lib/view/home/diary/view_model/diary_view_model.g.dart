@@ -9,7 +9,8 @@ part of 'diary_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$DiaryViewModel on _DiaryViewModelBase, Store {
-  final _$isLoadingAtom = Atom(name: '_DiaryViewModelBase.isLoading');
+  late final _$isLoadingAtom =
+      Atom(name: '_DiaryViewModelBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -24,7 +25,8 @@ mixin _$DiaryViewModel on _DiaryViewModelBase, Store {
     });
   }
 
-  final _$dateAtom = Atom(name: '_DiaryViewModelBase.date');
+  late final _$dateAtom =
+      Atom(name: '_DiaryViewModelBase.date', context: context);
 
   @override
   DateTime get date {
@@ -39,8 +41,8 @@ mixin _$DiaryViewModel on _DiaryViewModelBase, Store {
     });
   }
 
-  final _$calendarDataListAtom =
-      Atom(name: '_DiaryViewModelBase.calendarDataList');
+  late final _$calendarDataListAtom =
+      Atom(name: '_DiaryViewModelBase.calendarDataList', context: context);
 
   @override
   ObservableList<CalendarData> get calendarDataList {
@@ -55,8 +57,8 @@ mixin _$DiaryViewModel on _DiaryViewModelBase, Store {
     });
   }
 
-  final _$filteredCalendarDataListAtom =
-      Atom(name: '_DiaryViewModelBase.filteredCalendarDataList');
+  late final _$filteredCalendarDataListAtom = Atom(
+      name: '_DiaryViewModelBase.filteredCalendarDataList', context: context);
 
   @override
   ObservableList<CalendarData> get filteredCalendarDataList {
@@ -72,8 +74,8 @@ mixin _$DiaryViewModel on _DiaryViewModelBase, Store {
     });
   }
 
-  final _$searchOperationAtom =
-      Atom(name: '_DiaryViewModelBase.searchOperation');
+  late final _$searchOperationAtom =
+      Atom(name: '_DiaryViewModelBase.searchOperation', context: context);
 
   @override
   CancelableOperation<dynamic> get searchOperation {
@@ -88,7 +90,8 @@ mixin _$DiaryViewModel on _DiaryViewModelBase, Store {
     });
   }
 
-  final _$searchTextAtom = Atom(name: '_DiaryViewModelBase.searchText');
+  late final _$searchTextAtom =
+      Atom(name: '_DiaryViewModelBase.searchText', context: context);
 
   @override
   String get searchText {
@@ -103,8 +106,8 @@ mixin _$DiaryViewModel on _DiaryViewModelBase, Store {
     });
   }
 
-  final _$_DiaryViewModelBaseActionController =
-      ActionController(name: '_DiaryViewModelBase');
+  late final _$_DiaryViewModelBaseActionController =
+      ActionController(name: '_DiaryViewModelBase', context: context);
 
   @override
   void setLoading(bool newLoading) {

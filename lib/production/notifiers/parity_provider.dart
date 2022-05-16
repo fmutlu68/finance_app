@@ -17,7 +17,7 @@ class ParityProvider extends ChangeNotifier {
   bool isUpdated = false;
 
   ParityProvider() {
-    _parityDataService = ParityDataService(NetworkManager.instance);
+    _parityDataService = ParityDataService(manager: NetworkManager.instance);
     parityInfos = [
       ParityInfo(name: "EUR-USD", info: "Euro/Dolar", path: "eur-usd"),
       ParityInfo(name: "USD-EUR", info: "Dolar/Euro", path: "usd-eur"),

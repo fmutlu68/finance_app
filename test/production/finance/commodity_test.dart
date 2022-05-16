@@ -9,7 +9,7 @@ main() {
   setUp(() {});
   test("Email Regexp", () async {
     ICommodityDataService commodityDataService =
-        CommodityDataService(NetworkManager.instance);
+        CommodityDataService(manager: NetworkManager.instance);
     debugPrint((await commodityDataService.getCommodity(CommodityInfo(
             name: "ceyrek-altin", path: "ceyrek-altin", info: "Çeyrek Altın")))
         .toString());

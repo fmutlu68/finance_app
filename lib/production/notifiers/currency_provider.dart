@@ -17,7 +17,8 @@ class CurrencyProvider with ChangeNotifier {
   bool isUpdated = false;
 
   CurrencyProvider() {
-    _currencyDataService = CurrencyDataService(NetworkManager.instance);
+    _currencyDataService =
+        CurrencyDataService(manager: NetworkManager.instance);
     currencyInfos = [
       CurrencyInfo(
           name: "USD", info: "Amerikan Doları", path: "amerikan-dolari"),
@@ -63,6 +64,8 @@ class CurrencyProvider with ChangeNotifier {
       });
     } catch (error) {
       debugPrint("Catched an Error: $error");
+      isUpdated = false;
+      notifyListeners();
     }
   }
 }

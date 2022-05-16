@@ -20,7 +20,7 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
   @observable
   int selectedPage = 0;
   @override
-  void setContext(BuildContext ctx) => context = ctx;
+  void setContext(BuildContext ctx) => pageContext = ctx;
 
   @observable
   Route<dynamic>? currentRoute;

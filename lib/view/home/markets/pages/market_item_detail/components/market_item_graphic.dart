@@ -4,22 +4,19 @@ extension MarketItemGraphicExtension<
     T extends InfoModel,
     R extends IMoneyResponseModel,
     F extends IHistoryData<F>> on _MarketItemDetailViewState<T, R, F> {
-  Widget get getGraphicWidget => Observer(
-        builder: (context) {
-          HistoryDataProvider dataProvider =
-              context.watch<HistoryDataProvider>();
-          dataProvider.loadGraphData<F>(
-              viewModel.historyInfo!, widget.parserModel);
-          return dataProvider.data[dataProvider.data.keys.firstWhere(
-                      (element) => element == viewModel.historyInfo,
-                      orElse: () => emptyDataInfo)] !=
-                  null
-              ? Expanded(
-                  child: buildGraph(dataProvider),
-                )
-              : const CircularProgressIndicator();
-        },
-      );
+  Widget get getGraphicWidget {
+    return Observer(
+      builder: (_) {
+        HistoryDataProvider dataProvider = context.watch<HistoryDataProvider>();
+        return dataProvider.data[dataProvider.data.keys.firstWhere(
+                    (element) => element == viewModel.historyInfo,
+                    orElse: () => emptyDataInfo)] !=
+                null
+            ? Expanded(child: buildGraph(dataProvider))
+            : const CircularProgressIndicator();
+      },
+    );
+  }
 
   Widget get buildGraphTimeList => Observer(
       builder: (_) => SizedBox(
@@ -33,11 +30,8 @@ extension MarketItemGraphicExtension<
                   return ChoiceChip(
                     label: Text(e.text),
                     onSelected: (value) {
-                      if (viewModel.historyInfo?.graphTime == e) {
-                        _zoomPanBehavior.reset();
-                        return;
-                      }
-                      viewModel.setDataInfo(e);
+                      _zoomPanBehavior.reset();
+                      viewModel.setDataInfo(e, widget.parserModel);
                     },
                     selected: isSelected,
                     backgroundColor: Colors.green,
@@ -56,6 +50,7 @@ extension MarketItemGraphicExtension<
                 const InteractiveTooltip(enable: true, color: Colors.green),
             tooltipDisplayMode: TrackballDisplayMode.floatAllPoints),
         tooltipBehavior: _tooltipBehavior,
+        onTrackballPositionChanging: (_) => _tooltipBehavior.hide(),
         series: <ChartSeries<F, String>>[
           AreaSeries<F, String>(
             name: T is CurrencyInfo

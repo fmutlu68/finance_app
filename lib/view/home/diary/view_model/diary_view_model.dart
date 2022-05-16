@@ -13,7 +13,7 @@ abstract class _DiaryViewModelBase with Store, BaseViewModel {
   late TextEditingController searchController;
   late ScrollController dataTableScrollController;
   @override
-  void setContext(BuildContext ctx) => context = ctx;
+  void setContext(BuildContext ctx) => pageContext = ctx;
   @observable
   bool isLoading = false;
   @observable
@@ -67,7 +67,7 @@ abstract class _DiaryViewModelBase with Store, BaseViewModel {
 
   Future<void> loadData() async {
     setLoading(true);
-    setCalendarDataList(await context!
+    setCalendarDataList(await pageContext!
         .read<EconomicCalendarProvider>()
         .getCalendarDataByDate(date));
     setFilteredCalendarDataList([]);
@@ -90,7 +90,7 @@ abstract class _DiaryViewModelBase with Store, BaseViewModel {
             element.title.toLowerCase().contains(text.toLowerCase()))
         .toList());
     if (filteredCalendarDataList.isNotEmpty) {
-      FocusScope.of(context!).unfocus();
+      FocusScope.of(pageContext!).unfocus();
       dataTableScrollController.jumpTo(0);
     }
     setSearchText(text);

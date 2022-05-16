@@ -15,30 +15,48 @@ class CommodityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        onTap: () {},
-        title: Text(
+    return MarketCard(
+      isUpdated: isUpdated,
+      dailyGainAsPrice: newCommodity.dailyGainAsPrice!,
+      cardSubtitleText: "${newCommodity.price}",
+      cardTitleText:
           "${commodityInfo.hideName == true ? "" : (commodityInfo.nameToShow ?? commodityInfo.name) + " - "}${commodityInfo.info}",
-          style: getTitleStyle(context),
-        ),
-        subtitle: Text("${newCommodity.price}"),
-        leading: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            buildCurrencyIndicator(context),
-          ],
-        ),
-        trailing: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            buildDailyGain(context),
-            buildDailyGainAsTL(context),
-          ],
-        ),
-        minLeadingWidth: 0,
-      ),
+      exDailyGain: exCommodity.dailyGain!,
+      newDailyGain: newCommodity.dailyGain!,
+      selectedCurrency: commodityInfo.nameToShow
+                  ?.contains(ExchangeCurrency.turkishLira.symbol) ??
+              false
+          ? ExchangeCurrency.turkishLira
+          : ExchangeCurrency.dollar,
+      onClicked: () {
+        context.navigate(NavigationRoute.navigateToCommodityItemDetail(
+            commodityInfo, newCommodity));
+      },
     );
+    // return Card(
+    //   child: ListTile(
+    //     onTap: () {},
+    //     title: Text(
+    //       "${commodityInfo.hideName == true ? "" : (commodityInfo.nameToShow ?? commodityInfo.name) + " - "}${commodityInfo.info}",
+    //       style: getTitleStyle(context),
+    //     ),
+    //     subtitle: Text("${newCommodity.price}"),
+    //     leading: Column(
+    //       mainAxisAlignment: MainAxisAlignment.center,
+    //       children: [
+    //         buildCurrencyIndicator(context),
+    //       ],
+    //     ),
+    //     trailing: Column(
+    //       mainAxisAlignment: MainAxisAlignment.center,
+    //       children: [
+    //         buildDailyGain(context),
+    //         buildDailyGainAsTL(context),
+    //       ],
+    //     ),
+    //     minLeadingWidth: 0,
+    //   ),
+    // );
   }
 
   Icon buildCurrencyIndicator(BuildContext context) {

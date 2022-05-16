@@ -17,7 +17,7 @@ import '../../../../../../core/base/widget/base_view.dart';
 import '../../../../../../production/constant/enum/currency_enum.dart';
 import '../../../../../../production/constant/enum/graph_time_enum.dart';
 import '../../../../../../production/models/data/history_data_info.dart';
-import '../../../../../../production/notifiers/history_data_provider_2.dart';
+import '../../../../../../production/notifiers/history_data_provider.dart';
 import '../view_model/market_item_detail_view_model.dart';
 
 part '../components/market_item_currency_info_container.dart';
@@ -63,14 +63,18 @@ class _MarketItemDetailViewState<T extends InfoModel,
         viewModel = model;
         viewModel.setContext(context);
         viewModel.init();
-        viewModel.initHistoryInfo(widget.info is CurrencyInfo
-            ? HistoryInfo(name: "${widget.info.name}/TRL")
-            : HistoryInfo(name: widget.info.name.replaceAll("-", "/")));
+        viewModel.initHistoryInfo(
+            widget.info is CurrencyInfo
+                ? HistoryInfo(name: "${widget.info.name}/TRL")
+                : HistoryInfo(
+                    name: widget.info.graphSymbol ??
+                        widget.info.name.replaceAll("-", "/")),
+            widget.parserModel);
         _zoomPanBehavior = ZoomPanBehavior(
           enablePinching: true,
-          zoomMode: ZoomMode.xy,
-          enablePanning: true,
+          zoomMode: ZoomMode.x,
           enableDoubleTapZooming: true,
+          enablePanning: true,
         );
         _tooltipBehavior = TooltipBehavior(enable: true);
       },

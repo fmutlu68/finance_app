@@ -8,7 +8,7 @@ main() {
   setUp(() {});
   test("Email Regexp", () async {
     IParityDataService _dataService =
-        ParityDataService(NetworkManager.instance);
+        ParityDataService(manager: NetworkManager.instance);
     await _dataService.getParity(
         ParityInfo(name: "EUR-USD", info: "Euro/Dolar", path: "eur-usd"));
   });

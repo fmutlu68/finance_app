@@ -1,6 +1,5 @@
 import 'package:finance_app/core/base/state/base_view_state.dart';
 import 'package:finance_app/production/constant/enum/currency_enum.dart';
-import 'package:finance_app/production/features/finance_data/models/res/currency_history.dart';
 import 'package:finance_app/production/notifiers/currency_provider.dart';
 import 'package:finance_app/view/home/markets/pages/market_item_detail/view/market_item_detail_view.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:finance_app/production/features/finance_data/models/req/currency_info.dart';
 import 'package:finance_app/production/features/finance_data/models/res/currency.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../../production/features/finance_data/models/res/history/currency_history.dart';
 
 class CurrencyItemDetailView extends StatefulWidget {
   final CurrencyInfo info;

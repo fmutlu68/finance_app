@@ -13,7 +13,7 @@ extension CurrencySymbolExtension on ExchangeCurrency {
   String get symbol {
     switch (this) {
       case ExchangeCurrency.turkishLira:
-        return "TL";
+        return "TRY";
       case ExchangeCurrency.dollar:
         return "USD";
     }

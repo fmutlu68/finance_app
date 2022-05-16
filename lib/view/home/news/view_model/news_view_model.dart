@@ -10,7 +10,7 @@ abstract class _NewsViewModelBase with Store, BaseViewModel {
   @observable
   int headlineIndex = 0;
   @override
-  void setContext(BuildContext ctx) => context = ctx;
+  void setContext(BuildContext ctx) => pageContext = ctx;
 
   @override
   void init() {

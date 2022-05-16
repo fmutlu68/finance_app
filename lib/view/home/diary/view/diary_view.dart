@@ -1,5 +1,5 @@
 import 'package:finance_app/core/base/widget/base_view.dart';
-import 'package:finance_app/core/components/list_view/fields/custom_text_field.dart';
+import 'package:finance_app/core/components/fields/custom_text_field.dart';
 import 'package:finance_app/core/extensions/padding_extension.dart';
 import 'package:finance_app/core/models/components/fields/text_field_properties.dart';
 import 'package:finance_app/production/features/finance_data/extension/date_extension.dart';

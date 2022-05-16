@@ -17,7 +17,7 @@ class CryptoProvider extends ChangeNotifier {
   bool isUpdated = false;
 
   CryptoProvider() {
-    _cryptoDataService = CryptoDataService(NetworkManager.instance);
+    _cryptoDataService = CryptoDataService(manager: NetworkManager.instance);
     cryptoInfos = [
       CryptoInfo(
         nameToShow: "BTC",
@@ -125,6 +125,8 @@ class CryptoProvider extends ChangeNotifier {
     } catch (error) {
       print("Catched an Error: $error");
       print(error.runtimeType);
+      isUpdated = false;
+      notifyListeners();
     }
   }
 }

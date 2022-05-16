@@ -8,7 +8,7 @@ main() {
   setUp(() {});
   test("Doviz com Crypto Service", () async {
     ICryptoDataService _cryptoDataService =
-        CryptoDataService(NetworkManager.instance);
+        CryptoDataService(manager: NetworkManager.instance);
     print((await _cryptoDataService.getCrypto(CryptoInfo(
             nameToShow: "BTC",
             name: "bitcoin",
