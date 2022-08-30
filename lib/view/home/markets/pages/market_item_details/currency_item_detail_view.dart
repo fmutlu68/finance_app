@@ -28,7 +28,6 @@ class _CurrencyItemDetailViewState
     return MarketItemDetailView<CurrencyInfo, Currency, CurrencyHistory>(
       info: widget.info,
       currencyType: ExchangeCurrency.turkishLira,
-      marketItem: widget.currency,
       exMarketItem: context
           .watch<CurrencyProvider>()
           .exCurrencies

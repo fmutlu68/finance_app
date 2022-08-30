@@ -111,6 +111,7 @@ class _DiaryViewState extends BaseViewState<DiaryView> {
   Widget buildTableList(ObservableList<CalendarData> calendarDataList) {
     return SingleChildScrollView(
       controller: viewModel.dataTableScrollController,
+      physics: BouncingScrollPhysics(),
       child: DataTable(
         columns: const [
           DataColumn(label: Text("Saat")),

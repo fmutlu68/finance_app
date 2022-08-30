@@ -10,7 +10,7 @@ abstract class LocaleKeys {
   static const bottomBar_fifthItem = 'bottomBar.fifthItem';
   static const bottomBar = 'bottomBar';
   static const optionsView_title = 'optionsView.title';
-  static const optionsView_darkMode = 'optionsView.darkMode';
+  static const optionsView_themeMode = 'optionsView.themeMode';
   static const optionsView_lang = 'optionsView.lang';
   static const optionsView_frontend = 'optionsView.frontend';
   static const optionsView_otherOptions = 'optionsView.otherOptions';

@@ -1,21 +1,10 @@
-enum ExchangeCurrency { turkishLira, dollar }
+enum ExchangeCurrency {
+  turkishLira(icon: "₺", symbol: "TRY"),
+  dollar(icon: "\$", symbol: "USD"),
+  euro(icon: "€", symbol: "EUR"),
+  sterlin(icon: "£", symbol: "GBP");
 
-extension CurrencySymbolExtension on ExchangeCurrency {
-  String get icon {
-    switch (this) {
-      case ExchangeCurrency.turkishLira:
-        return "₺";
-      case ExchangeCurrency.dollar:
-        return "\$";
-    }
-  }
-
-  String get symbol {
-    switch (this) {
-      case ExchangeCurrency.turkishLira:
-        return "TRY";
-      case ExchangeCurrency.dollar:
-        return "USD";
-    }
-  }
+  final String icon;
+  final String symbol;
+  const ExchangeCurrency({required this.icon, required this.symbol});
 }

@@ -1,5 +1,4 @@
 import 'package:finance_app/core/extensions/border_radius_extension.dart';
-import 'package:finance_app/core/extensions/padding_extension.dart';
 import 'package:finance_app/core/extensions/spacer_extension.dart';
 import 'package:finance_app/core/extensions/theme_extension.dart';
 import 'package:finance_app/production/features/finance_data/base/model/i_money_response_model.dart';

@@ -60,9 +60,9 @@ class CoreDio with DioMixin implements Dio, ICoreDio {
   }
 
   @override
-  Future<String> getOnlyHtml({required String path}) async {
+  Future<Response<String>> getPage({required String path}) async {
     final response = await request<String>(path);
     // print(response.headers.map["set-cookie"].runtimeType);
-    return response.data ?? "";
+    return response;
   }
 }

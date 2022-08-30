@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:finance_app/core/base/model/base_model.dart';
 import 'package:finance_app/core/base/model/base_response_model.dart';
 import 'package:finance_app/core/enum/network_request_types.dart';
@@ -13,5 +14,5 @@ abstract class ICoreDio {
     Map<String, dynamic>? headers,
   });
 
-  Future<String> getOnlyHtml({required String path});
+  Future<Response<String>> getPage({required String path});
 }

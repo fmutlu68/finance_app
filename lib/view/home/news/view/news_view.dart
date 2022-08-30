@@ -3,6 +3,7 @@ import 'package:finance_app/core/components/list_view/indicator_list_view.dart';
 import 'package:finance_app/core/extensions/padding_extension.dart';
 import 'package:finance_app/core/extensions/theme_extension.dart';
 import 'package:finance_app/production/features/finance_data/models/res/bullonism_news.dart';
+import 'package:finance_app/production/features/finance_data/models/res/commodity_news.dart';
 import 'package:finance_app/production/features/finance_data/models/res/crypto_news.dart';
 import 'package:finance_app/production/features/finance_data/models/res/currency_news.dart';
 import 'package:finance_app/production/features/finance_data/models/res/headline_news.dart';
@@ -42,8 +43,9 @@ class NewsView extends StatelessWidget {
                 _buildListIndicator(context),
               _buiildAgendaNewsBar(context),
               _buildCurrencyNewsBar(context),
+              _buildCommodityNewsBar(context),
               _buildCryptoNewsBar(context),
-              _buildBullonismNewsBar(context),
+              _buildBullionismNewsBar(context),
               _buildStockMarketNewsBar(context),
             ],
           ),
@@ -101,13 +103,25 @@ class NewsView extends StatelessWidget {
     );
   }
 
-  _buildBullonismNewsBar(BuildContext context) {
+  _buildBullionismNewsBar(BuildContext context) {
     NewsProvider newsProvider = context.watch<NewsProvider>();
     return Padding(
       padding: context.veryLowSymPadding,
-      child: CategoryNewsColumn<BullonismNews>(
-        news: newsProvider.bullonismNews,
-        categoryName: "Değerli Metal Haberleri",
+      child: CategoryNewsColumn<BullionismNews>(
+        news: newsProvider.bullionismNews,
+        categoryName: "Altın Haberleri",
+        bgColor: context.colors.primary,
+      ),
+    );
+  }
+
+  _buildCommodityNewsBar(BuildContext context) {
+    NewsProvider newsProvider = context.watch<NewsProvider>();
+    return Padding(
+      padding: context.veryLowSymPadding,
+      child: CategoryNewsColumn<CommodityNews>(
+        news: newsProvider.commodityNews,
+        categoryName: "Emtia Haberleri",
         bgColor: context.colors.primary,
       ),
     );

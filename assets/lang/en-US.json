@@ -8,8 +8,8 @@
     },
     "optionsView" : {
         "title" : "Options",
-        "darkMode" : "Dark Mode",
-        "lang" : "Language",
+        "themeMode" : "App Theme Options",
+        "lang" : "Language Options",
         "frontend" : "Frontend Options",
         "otherOptions" : "Other Options",
         "notification" : "Notifications",

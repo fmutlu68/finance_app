@@ -33,7 +33,7 @@ class MarketCard extends StatelessWidget {
         ),
         trailing: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [buildDailyGain(context), buildDailyGainAsTL(context)],
+          children: [buildDailyGain(context), buildDailyGainAsPrice(context)],
         ),
         minLeadingWidth: 0,
       ),
@@ -58,12 +58,16 @@ class MarketCard extends StatelessWidget {
     return Text(
       "%${newDailyGain.toStringAsFixed(2)}",
       style: TextStyle(
-        color: newDailyGain < 0.00 ? Colors.red : Colors.green,
+        color: newDailyGain < 0.00
+            ? Colors.red
+            : newDailyGain == 0.00
+                ? Colors.orange
+                : Colors.green,
       ),
     );
   }
 
-  Text buildDailyGainAsTL(BuildContext context) {
+  Text buildDailyGainAsPrice(BuildContext context) {
     if (dailyGainAsPrice.contains("0,00")) {
       dailyGainAsPrice = dailyGainAsPrice.replaceAll("-", "");
     }
@@ -73,9 +77,11 @@ class MarketCard extends StatelessWidget {
         color: newDailyGain < 0.00 &&
                 dailyGainAsPrice != "${selectedCurrency.icon}0,00"
             ? Colors.red
-            : dailyGainAsPrice == "${selectedCurrency.icon}0,00"
-                ? context.colors.onSurface
-                : Colors.green,
+            : newDailyGain == 0.00
+                ? Colors.orange
+                : dailyGainAsPrice == "${selectedCurrency.icon}0,00"
+                    ? context.colors.onSurface
+                    : Colors.green,
       ),
     );
   }

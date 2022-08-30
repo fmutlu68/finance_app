@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:dio/dio.dart';
 import 'package:finance_app/core/start/network/service/network_manager.dart';
 import 'package:finance_app/production/features/finance_data/base/model/i_commodity.dart';
 import 'package:finance_app/production/features/finance_data/base/service/i_commodity_data_service.dart';
@@ -76,6 +77,7 @@ class CommodityProvider with ChangeNotifier {
       });
     } catch (error) {
       print("Catched an Error: $error");
+      print((error as DioError).response?.statusCode);
       isUpdated = false;
       notifyListeners();
     }

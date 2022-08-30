@@ -21,5 +21,11 @@ class ThemeNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+  void changeThemeByParam(ThemeMode mode) {
+    _mode = mode;
+    LocalCacheManager.instance.setString("theme", _mode.theme);
+    notifyListeners();
+  }
+
   ThemeMode get getTheme => _mode;
 }

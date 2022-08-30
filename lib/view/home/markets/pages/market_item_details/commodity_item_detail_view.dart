@@ -30,10 +30,9 @@ class _CommodityItemDetailViewState
       info: widget.info,
       currencyType: widget.info.nameToShow
                   ?.contains(ExchangeCurrency.turkishLira.symbol) ??
-              false
+              false || widget.info.info == "Çeyrek Altın"
           ? ExchangeCurrency.turkishLira
           : ExchangeCurrency.dollar,
-      marketItem: widget.commodity,
       exMarketItem: context
           .watch<CommodityProvider>()
           .exCommodities

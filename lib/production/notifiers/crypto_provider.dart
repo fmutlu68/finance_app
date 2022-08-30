@@ -62,12 +62,6 @@ class CryptoProvider extends ChangeNotifier {
         path: "dogecoin",
       ),
       CryptoInfo(
-        nameToShow: "LUNA",
-        name: "terra-luna",
-        info: "Terra",
-        path: "terra-luna",
-      ),
-      CryptoInfo(
         nameToShow: "SOL",
         name: "solana",
         info: "Solana",

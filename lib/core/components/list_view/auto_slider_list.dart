@@ -2,14 +2,14 @@ import 'dart:async';
 import 'package:finance_app/core/extensions/dynamic_size_extension.dart';
 import 'package:flutter/material.dart';
 
-class WidgetSlider extends StatefulWidget {
+class AutoSliderList extends StatefulWidget {
   final List<Widget> children;
   final double? spacing;
   final double? slidingSpeed;
   final Axis? slideAxis;
   final int? slideCount;
 
-  const WidgetSlider(
+  const AutoSliderList(
       {Key? key,
       required this.children,
       this.spacing,
@@ -19,10 +19,10 @@ class WidgetSlider extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<WidgetSlider> createState() => _WidgetSliderState();
+  State<AutoSliderList> createState() => _AutoSliderListState();
 }
 
-class _WidgetSliderState extends State<WidgetSlider> {
+class _AutoSliderListState extends State<AutoSliderList> {
   late ScrollController _sliderController;
   late Timer _sliderTimer;
   final Duration _updateDuration = const Duration(milliseconds: 100);

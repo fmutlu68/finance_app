@@ -5,6 +5,7 @@ import 'package:finance_app/production/features/finance_data/base/model/i_news.d
 import 'package:finance_app/production/features/finance_data/base/service/i_news_data_service.dart';
 import 'package:finance_app/production/features/finance_data/models/res/agenda_news.dart';
 import 'package:finance_app/production/features/finance_data/models/res/bullonism_news.dart';
+import 'package:finance_app/production/features/finance_data/models/res/commodity_news.dart';
 import 'package:finance_app/production/features/finance_data/models/res/crypto_news.dart';
 import 'package:finance_app/production/features/finance_data/models/res/currency_news.dart';
 import 'package:finance_app/production/features/finance_data/models/res/headline_news.dart';
@@ -18,8 +19,9 @@ class NewsProvider extends ChangeNotifier {
   List<HeadlineNews> headlines = [];
   List<CurrencyNews> currencyNews = [];
   List<AgendaNews> agendaNews = [];
+  List<CommodityNews> commodityNews = [];
   List<CryptoNews> cryptoNews = [];
-  List<BullonismNews> bullonismNews = [];
+  List<BullionismNews> bullionismNews = [];
   List<StockMarketNews> stockMarketNews = [];
   final List<NewsDetail> _details = [];
 
@@ -52,7 +54,8 @@ class NewsProvider extends ChangeNotifier {
     currencyNews = await _newsDataService.getCurrencyNews();
     agendaNews = await _newsDataService.getAgendaNews();
     cryptoNews = await _newsDataService.getCryptoNews();
-    bullonismNews = await _newsDataService.getBullonismNews();
+    bullionismNews = await _newsDataService.getBullionismNews();
+    commodityNews = await _newsDataService.getCommodityNews();
     stockMarketNews = await _newsDataService.getStockMarketNews();
     isUpdated = true;
     notifyListeners();

@@ -26,7 +26,6 @@ part '../components/market_item_graphic.dart';
 class MarketItemDetailView<T extends InfoModel, R extends IMoneyResponseModel,
     F extends IHistoryData<F>> extends StatefulWidget {
   final T info;
-  final R marketItem;
   final R exMarketItem;
   final R newMarketItem;
   final F parserModel;
@@ -36,7 +35,6 @@ class MarketItemDetailView<T extends InfoModel, R extends IMoneyResponseModel,
       {Key? key,
       required this.info,
       required this.currencyType,
-      required this.marketItem,
       required this.exMarketItem,
       required this.newMarketItem,
       required this.isUpdated,
@@ -63,13 +61,6 @@ class _MarketItemDetailViewState<T extends InfoModel,
         viewModel = model;
         viewModel.setContext(context);
         viewModel.init();
-        viewModel.initHistoryInfo(
-            widget.info is CurrencyInfo
-                ? HistoryInfo(name: "${widget.info.name}/TRL")
-                : HistoryInfo(
-                    name: widget.info.graphSymbol ??
-                        widget.info.name.replaceAll("-", "/")),
-            widget.parserModel);
         _zoomPanBehavior = ZoomPanBehavior(
           enablePinching: true,
           zoomMode: ZoomMode.x,
@@ -77,6 +68,13 @@ class _MarketItemDetailViewState<T extends InfoModel,
           enablePanning: true,
         );
         _tooltipBehavior = TooltipBehavior(enable: true);
+        viewModel.initHistoryInfo(
+            widget.info is CurrencyInfo
+                ? HistoryInfo(name: "${widget.info.name}/TRL")
+                : HistoryInfo(
+                    name: widget.info.graphSymbol ??
+                        widget.info.name.replaceAll("-", "/")),
+            widget.parserModel);
       },
       onPageBuilder: (context, model) {
         return SafeArea(
@@ -92,7 +90,7 @@ class _MarketItemDetailViewState<T extends InfoModel,
             ),
             body: Column(
               children: [
-                getCurrencyInfoContainer,
+                getMarketItemInfoContainer,
                 buildGraphTimeList,
                 getGraphicWidget,
               ],

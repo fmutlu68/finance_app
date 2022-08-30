@@ -4,7 +4,7 @@ extension MarketItemCurrencyInfoContainer<
     T extends InfoModel,
     R extends IMoneyResponseModel,
     F extends IHistoryData<F>> on _MarketItemDetailViewState<T, R, F> {
-  Widget get getCurrencyInfoContainer {
+  Widget get getMarketItemInfoContainer {
     return Container(
       width: double.infinity,
       color: context.colors.onError,
@@ -133,9 +133,10 @@ extension MarketItemCurrencyInfoContainer<
 
   Widget get appBarBottomMarketsState {
     return Text(
-      widget.newMarketItem.marketsOpen ?? false
-          ? "Piyasa açık"
-          : "Veri gecikti",
+      (widget.newMarketItem.marketsOpen ?? false
+              ? "Piyasa açık"
+              : "Veri gecikti") +
+          " ${widget.newMarketItem.lastUpdatedDate ?? ""}",
       style: TextStyle(
           color: widget.newMarketItem.marketsOpen ?? false
               ? Colors.green

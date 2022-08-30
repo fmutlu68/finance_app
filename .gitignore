@@ -32,7 +32,7 @@
 /build/
 
 # Project Related
-lib/production/features/finance_data/
+# lib/production/features/finance_data/
 
 # Web related
 lib/generated_plugin_registrant.dart

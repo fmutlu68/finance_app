@@ -68,9 +68,10 @@ extension MarketItemGraphicExtension<
           )
         ],
         primaryYAxis: NumericAxis(
-            numberFormat:
-                NumberFormat.compactCurrency(symbol: widget.currencyType.icon),
-            edgeLabelPlacement: EdgeLabelPlacement.shift),
+          numberFormat:
+              NumberFormat.compactCurrency(symbol: widget.currencyType.icon),
+          edgeLabelPlacement: EdgeLabelPlacement.shift,
+        ),
         primaryXAxis: CategoryAxis(
           edgeLabelPlacement: EdgeLabelPlacement.shift,
         ),

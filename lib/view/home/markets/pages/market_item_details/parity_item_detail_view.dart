@@ -25,8 +25,12 @@ class _ParityItemDetailViewState extends State<ParityItemDetailView> {
   Widget build(BuildContext context) {
     return MarketItemDetailView<ParityInfo, Parity, ParityHistory>(
       info: widget.info,
-      currencyType: ExchangeCurrency.dollar,
-      marketItem: widget.parity,
+      currencyType:
+          widget.info.name.contains(ExchangeCurrency.sterlin.symbol + "-")
+              ? ExchangeCurrency.sterlin
+              : widget.info.name.contains(ExchangeCurrency.euro.symbol + "-")
+                  ? ExchangeCurrency.euro
+                  : ExchangeCurrency.dollar,
       exMarketItem: context
           .watch<ParityProvider>()
           .exParities

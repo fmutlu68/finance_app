@@ -1,7 +1,7 @@
 import 'package:finance_app/core/features/local_cache/base/init_service.dart';
 import 'package:finance_app/core/features/local_cache/hive/models/hive_adapter_type.dart';
 import 'package:finance_app/core/features/local_cache/hive/models/hive_init_parameters.dart';
-import 'package:finance_app/production/models/hive/hive_model.dart';
+import 'package:finance_app/production/models/local/hive_model.dart';
 import 'package:hive/hive.dart';
 
 abstract class IProjectCacheManager<T, R> {

@@ -31,7 +31,7 @@ Future<void> main() async {
   runApp(
     EasyLocalization(
       supportedLocales: LanguageStarter.instance.supportedLocales,
-      path: AppConstants.LANG_ASSET_PATH,
+      path: AppConstants.langAssetPath,
       useOnlyLangCode: false,
       child: MultiProvider(
         providers: [
@@ -42,8 +42,7 @@ Future<void> main() async {
           ChangeNotifierProvider(create: (context) => CryptoProvider()),
           ChangeNotifierProvider(create: (context) => NewsProvider()),
           ChangeNotifierProvider(create: (context) => HistoryDataProvider()),
-          ChangeNotifierProvider(
-              create: (context) => EconomicCalendarProvider()),
+          ChangeNotifierProvider(create: (context) => EconomicCalendarProvider()),
         ],
         child: const MyApp(),
       ),

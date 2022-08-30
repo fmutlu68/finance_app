@@ -8,8 +8,8 @@
     },
     "optionsView" : {
         "title" : "Seçenekler",
-        "darkMode" : "Gece Modu",
-        "lang" : "Dil",
+        "themeMode" : "Uygulama Renk Seçenekleri",
+        "lang" : "Dil Seçenekleri",
         "frontend" : "Önyüz Seçenekleri",
         "otherOptions" : "Diğer Seçenekler",
         "notification" : "Bildirimler",
