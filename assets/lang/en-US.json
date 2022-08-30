@@ -15,5 +15,8 @@
         "notification" : "Notifications",
         "statistics" : "Statistics",
         "exit" : "Exit from App"
+    },
+    "portfolio" : {
+        "info" : "Coming soon..."
     }
 }

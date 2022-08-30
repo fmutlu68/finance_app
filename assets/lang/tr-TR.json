@@ -15,5 +15,8 @@
         "notification" : "Bildirimler",
         "statistics" : "İstatistikler",
         "exit" : "Uygulamadan Çık"
+    },
+    "portfolio" : {
+        "info" : "Çok yakında..."
     }
 }
