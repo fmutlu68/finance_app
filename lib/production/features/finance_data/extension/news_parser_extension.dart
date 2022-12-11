@@ -8,12 +8,8 @@ import 'package:html/parser.dart' show parse;
 
 extension NewsParserExtension on NewsDataService {
   HeadlineNews getFirstHeadline(String html) {
-    Element firstHeadlineElement = parse(html)
-        .body!
-        .getElementsByClassName("featured-news-first")
-        .first
-        .children
-        .first;
+    Element firstHeadlineElement =
+        parse(html).body!.getElementsByClassName("col429").first.children.first;
     Element headlineImageElement =
         firstHeadlineElement.getElementsByTagName("img").first;
     return HeadlineNews(
