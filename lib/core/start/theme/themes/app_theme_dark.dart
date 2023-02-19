@@ -19,12 +19,12 @@ class AppThemeDark extends AppTheme {
         unselectedItemColor: Colors.white12,
         backgroundColor: Colors.black,
       ),
-      bottomAppBarColor: Colors.white10,
       pageTransitionsTheme: PageTransitionsTheme(
         builders: {
           TargetPlatform.android: CustomTransitionsBuilder(),
         },
-      ));
+      ),
+      bottomAppBarTheme: const BottomAppBarTheme(color: Colors.white10));
 
   ColorScheme get _color => const ColorScheme.dark().copyWith();
 }

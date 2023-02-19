@@ -3,12 +3,14 @@ import 'package:finance_app/production/features/finance_data/extension/time_exte
 import 'package:finance_app/production/features/finance_data/models/req/commodity_info.dart';
 import 'package:finance_app/production/features/finance_data/services/commodity_data_service.dart';
 import 'package:flutter/material.dart';
+import 'package:html/parser.dart';
 
 extension CommodityParserExtension on CommodityDataService {
   String getBuyingPrice(CommodityInfo commodity, String html) {
+    // data-socket-type="${_getCommodityType(commodity)}"
     RegExp currencyExp = RegExp(
-        '<div class="text-xl font-semibold text-white" data-socket-key="${commodity.name}" data-socket-type="${_getCommodityType(commodity)}" data-socket-attr="s">(.*?)</div>');
-    return currencyExp.firstMatch(html)?.group(1) ?? "0.00";
+        '<div class="text-xl font-semibold text-white" data-socket-key="${commodity.name}"(.*?)data-socket-attr="s">(.*?)</div>');
+    return currencyExp.firstMatch(html)?.group(2) ?? "0.00";
   }
 
   Map<String, String> getDailyLowestAndTopCommodity(
@@ -21,14 +23,17 @@ extension CommodityParserExtension on CommodityDataService {
   }
 
   String getDailyGain(CommodityInfo commodity, String html) {
-    RegExp dailyExp = RegExp(
-        '<span data-socket-key="${commodity.name}" data-socket-type="${_getCommodityType(commodity)}" data-socket-attr="c">(.*?)</span>');
-    return dailyExp.firstMatch(html)?.group(1) ?? "0.00";
+    return parse(html)
+        .getElementsByTagName("span")
+        .firstWhere((element) =>
+            element.attributes["data-socket-key"] == commodity.name &&
+            element.attributes["data-socket-attr"] == "c")
+        .text;
   }
 
   String getDailyGainAsPrice(CommodityInfo commodity, String html) {
     RegExp dailyExp = RegExp(
-        '(<span data-socket-key="${commodity.name}" data-socket-type="${_getCommodityType(commodity)}" data-socket-attr="a">(.*?)</span>)');
+        '<span data-socket-key="${commodity.name}"(.*?)data-socket-attr="a">(.*?)</span>');
     return dailyExp.firstMatch(html)?.group(2) ?? "\$0.00";
   }
 
@@ -46,13 +51,14 @@ extension CommodityParserExtension on CommodityDataService {
   }
 
   Map<String, String> getHistoricalGains(CommodityInfo commodity, String html) {
-    RegExp dailyExp = RegExp(
-        '<td class="text-bold color-(.*?)">(.*?)</td><td class="text-bold color-(.*?)">(.*?)</td><td class="text-bold color-(.*?)">(.*?)</td>');
-    RegExpMatch matchedExp = dailyExp.firstMatch(html)!;
+    RegExp historicalData = RegExp(
+        '<div class="w-1/2"><div class="row"><span>(.*?)Haftalık Değişim(.*?)</span><span class="change(.*?)">(.*?)</span></div><div class="row"><span>(.*?)Aylık Değişim(.*?)</span><span class="change(.*?)">(.*?)</span></div><div class="row"><span>(.*?)Yıllık Değişim(.*?)</span><span class="change(.*?)">(.*?)</span></div></div>');
+    ;
+    RegExpMatch? matchedExp = historicalData.firstMatch(html);
     return {
-      "weekly": matchedExp.group(2)!,
-      "monthly": matchedExp.group(4)!,
-      "yearly": matchedExp.group(6)!,
+      "weekly": matchedExp?.group(2) ?? "0.00",
+      "monthly": matchedExp?.group(4) ?? "0.00",
+      "yearly": matchedExp?.group(6) ?? "0.00",
     };
   }
 

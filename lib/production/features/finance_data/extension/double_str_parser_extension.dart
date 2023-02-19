@@ -15,4 +15,8 @@ extension DoubleStrParserExtension on String {
         .replaceAll(",", ".")
         .replaceAll("%", ""));
   }
+
+  bool operator(String other) {
+    return other.isEmpty;
+  }
 }

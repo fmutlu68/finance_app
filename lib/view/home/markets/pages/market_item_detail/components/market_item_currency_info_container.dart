@@ -131,17 +131,24 @@ extension MarketItemCurrencyInfoContainer<
     );
   }
 
-  Widget get appBarBottomMarketsState {
-    return Text(
-      (widget.newMarketItem.marketsOpen ?? false
-              ? "Piyasa açık"
-              : "Veri gecikti") +
-          " ${widget.newMarketItem.lastUpdatedDate ?? ""}",
-      style: TextStyle(
-          color: widget.newMarketItem.marketsOpen ?? false
-              ? Colors.green
-              : Colors.red),
-    );
+  Widget get getMarketsIsOpenWidget {
+    return widget.newMarketItem.lastUpdatedDate == null
+        ? Container()
+        : Tooltip(
+            message: (widget.newMarketItem.marketsOpen ?? false
+                ? "Piyasa açık"
+                : "Veri gecikti"),
+            child: Container(
+              padding: EdgeInsets.all(context.calculateDynamicWidth(0.8)),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: (widget.newMarketItem.marketsOpen ?? false)
+                      ? context.colors.onPrimary
+                      : Colors.deepOrange),
+              child: Text(" ${widget.newMarketItem.lastUpdatedDate ?? ""}"),
+            ),
+          );
   }
 
   getUpdateableStyle(

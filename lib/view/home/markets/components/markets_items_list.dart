@@ -20,6 +20,8 @@ class MarketsItemsList<T extends InfoModel, R extends ResponseModel>
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      physics: const BouncingScrollPhysics(),
+      padding: context.veryLowSymPadding,
       itemCount: marketItemsInfos.length,
       shrinkWrap: true,
       itemBuilder: (context, index) {

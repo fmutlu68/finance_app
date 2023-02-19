@@ -1,3 +1,4 @@
+import 'package:finance_app/core/extensions/dynamic_size_extension.dart';
 import 'package:finance_app/core/extensions/number_format_extension.dart';
 import 'package:finance_app/core/extensions/padding_extension.dart';
 import 'package:finance_app/core/extensions/theme_extension.dart';
@@ -81,12 +82,7 @@ class _MarketItemDetailViewState<T extends InfoModel,
           child: Scaffold(
             appBar: AppBar(
               title: appBarCurrencyTitle,
-              bottom: PreferredSize(
-                child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: appBarBottomMarketsState),
-                preferredSize: Size(double.infinity, calculateDynamicHeight(2)),
-              ),
+              actions: [getMarketsIsOpenWidget],
             ),
             body: Column(
               children: [

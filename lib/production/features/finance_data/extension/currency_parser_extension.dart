@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 extension CurrencyParserExtension on CurrencyDataService {
   String getBuyingCurrency(CurrencyInfo currency, String html) {
     RegExp currencyExp = RegExp(
-        '<span data-socket-key="${currency.name}" data-socket-type="C" data-socket-attr="b">(.*?)</span>');
+        '<span data-socket-key="${currency.name}" data-socket-attr="bid">(.*?)</span>');
     return currencyExp.firstMatch(html)?.group(1) ?? "0.00";
   }
 
   String getSellingCurrency(CurrencyInfo currency, String html) {
     RegExp currencyExp = RegExp(
-        '<span data-socket-key="${currency.name}" data-socket-type="C" data-socket-attr="s">(.*?)</span>');
+        '<span data-socket-key="${currency.name}" data-socket-attr="ask">(.*?)</span>');
     return currencyExp.firstMatch(html)?.group(1) ?? "0.00";
   }
 
@@ -27,24 +27,24 @@ extension CurrencyParserExtension on CurrencyDataService {
 
   String getDailyGain(CurrencyInfo currency, String html) {
     RegExp dailyExp = RegExp(
-        '<span class="change (.*?)" data-socket-key="${currency.name}" data-socket-type="C" data-socket-attr="c">(.*?)</span>');
-    return dailyExp.firstMatch(html)?.group(2) ?? "0.00";
+        '<span class="change (up|down)?" data-socket-key="${currency.name}"(.*?)data-socket-attr="c">(.*?)</span>');
+    return dailyExp.firstMatch(html)?.group(3) ?? "0.00";
   }
 
   String getDailyGainAsTL(CurrencyInfo currency, String html) {
     RegExp dailyExp = RegExp(
-        '(<span data-socket-key="${currency.name}" data-socket-type="C" data-socket-attr="a">(.*?)</span>)');
-    return dailyExp.firstMatch(html)?.group(2) ?? "₺0.00";
+        '(<span data-socket-key="${currency.name}"(.*?)data-socket-attr="a">(.*?)</span>)');
+    return dailyExp.firstMatch(html)?.group(3) ?? "₺0.00";
   }
 
   Map<String, String> getHistoricalGains(CurrencyInfo currency, String html) {
     RegExp dailyExp = RegExp(
-        '<td class="color-(.*?) text-bold">(.*?)</td><td class="color-(.*?) text-bold">(.*?)</td><td class="color-(.*?) text-bold">(.*?)</td>');
+        '<div class="w-1/2"><div class="row"><span>(.*?)Haftalık Değişim(.*?)</span><span class="change(.*?)">(.*?)</span></div><div class="row"><span>(.*?)Aylık Değişim(.*?)</span><span class="change(.*?)">(.*?)</span></div><div class="row"><span>(.*?)Yıllık Değişim(.*?)</span><span class="change(.*?)">(.*?)</span></div></div>');
     RegExpMatch matchedExp = dailyExp.firstMatch(html)!;
     return {
-      "weekly": matchedExp.group(2)!,
-      "monthly": matchedExp.group(4)!,
-      "yearly": matchedExp.group(6)!,
+      "weekly": matchedExp.group(4)!,
+      "monthly": matchedExp.group(8)!,
+      "yearly": matchedExp.group(12)!,
     };
   }
 

@@ -59,27 +59,27 @@ class CommodityProvider with ChangeNotifier {
   }
 
   Future<void> loadData() async {
-    try {
-      List<ICommodity> commoditiesToUpdate =
-          await _commodityDataService.getCommodities(commodityInfos);
-      if (exCommodities.isEmpty && newCommodities.isEmpty) {
-        exCommodities = commoditiesToUpdate;
-        newCommodities = commoditiesToUpdate;
-      } else {
-        exCommodities = newCommodities;
-        newCommodities = commoditiesToUpdate;
-      }
-      isUpdated = true;
-      notifyListeners();
-      await Future.delayed(const Duration(seconds: 1), () {
-        isUpdated = false;
-        notifyListeners();
-      });
-    } catch (error) {
-      print("Catched an Error: $error");
-      print((error as DioError).response?.statusCode);
+    // try {
+    List<ICommodity> commoditiesToUpdate =
+        await _commodityDataService.getCommodities(commodityInfos);
+    if (exCommodities.isEmpty && newCommodities.isEmpty) {
+      exCommodities = commoditiesToUpdate;
+      newCommodities = commoditiesToUpdate;
+    } else {
+      exCommodities = newCommodities;
+      newCommodities = commoditiesToUpdate;
+    }
+    isUpdated = true;
+    notifyListeners();
+    await Future.delayed(const Duration(seconds: 1), () {
       isUpdated = false;
       notifyListeners();
-    }
+    });
+    // } catch (error) {
+    //   print("Catched an Error: $error");
+    //   print((error as DioError).response?.statusCode);
+    //   isUpdated = false;
+    //   notifyListeners();
+    // }
   }
 }
